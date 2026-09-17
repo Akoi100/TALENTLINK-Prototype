@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TALENTLINK | Co-Curricular Tracking & Talent Scouting Platform</title>
+  <meta name="description" content="A decentralized, tamper-evident co-curricular tracking and talent scouting platform featuring offline-first field logging, cryptographic credentialing, and minor data protection." />
+  <meta name="author" content="Jane's Project" />
+
+  <!-- External Stylesheets -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- =========================================================================
+       MASTER SITE HEADER: Branding, Offline Switcher & Multi-Role Navigation
+       ========================================================================= -->
+  <header class="site-header">
+    <div class="header-inner">
+      <!-- Brand Logo -->
+      <div class="brand">
+        <div class="brand-icon">TL</div>
+        <div>
+          <div class="brand-title">
+            TALENTLINK
+            <span class="brand-badge">CAPSTONE PROTOTYPE</span>
+          </div>
+          <span class="brand-subtitle">Co-Curricular Tracking & Talent Scouting Platform • Jane's Project</span>
+        </div>
+      </div>
+
+      <!-- Network Status Simulator Pill (Offline / Online toggle) -->
+      <div class="network-status-bar" title="Simulate field connectivity at remote tournaments">
+        <div class="network-indicator" id="network-indicator"></div>
+        <span id="network-label-text">School Wi-Fi (Online)</span>
+        <button class="network-toggle-btn" id="network-toggle-btn" type="button">
+          Toggle Offline Mode
+        </button>
+      </div>
+
+      <!-- Role-Based Access Control (RBAC) Switcher -->
+      <nav class="role-nav" aria-label="Role Switcher">
+        <button class="role-btn active" data-role="scout" type="button">
+          <span>🔍 Scout Portal</span>
+        </button>
+        <button class="role-btn" data-role="patron" type="button">
+          <span>📋 Coach / Patron</span>
+          <span class="role-tag-counter" id="pending-tx-counter">1 Pending</span>
+        </button>
+        <button class="role-btn" data-role="admin" type="button">
+          <span>🏛️ School Admin</span>
+          <span class="role-tag-counter" id="pending-inq-counter">1 Inq</span>
+        </button>
+        <button class="role-btn" data-role="student" type="button">
+          <span>🎓 Student CV</span>
+        </button>
+        <button class="role-btn spec-btn" data-role="blueprint" type="button">
+          <span>📐 Assessor Spec</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       SUB-HEADER SYSTEM META BAR: Live Sync, Compliance & Ledger Status
+       ========================================================================= -->
+  <aside class="system-meta-bar">
+    <div class="system-meta-inner">
+      <div class="meta-item">
+        <span>Institutional Node:</span>
+        <strong style="color: var(--text-highlight);">St. Jude Senior High School (STJ-KE-042)</strong>
+      </div>
+      <div class="meta-item">
+        <span>SQLite Sync Engine:</span>
+        <span class="meta-badge" id="sync-status-badge">Ledger Synced</span>
+      </div>
+      <div class="meta-item">
+        <span>Minor Data Privacy:</span>
+        <span class="meta-badge purple">COPPA / GDPR-K Active (PII Masked)</span>
+      </div>
+      <div class="meta-item">
+        <span>Tamper Security:</span>
+        <span class="meta-badge">SHA-256 Signed</span>
+      </div>
+      <div>
+        <button class="btn-sync-trigger" id="btn-manual-sync" type="button">
+          <span>🔄 Sync Local Queue</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- =========================================================================
+       MAIN CONTENT CONTAINER
+       ========================================================================= -->
+  <main class="main-wrapper">
+
+    <!-- =======================================================================
+         VIEW 1: TALENT SCOUT & SCHOLARSHIP PORTAL (Module 4, Section 4.2)
+         ======================================================================= -->
+    <section class="view-panel active" id="view-scout">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <h2>
+            <span>🔍 Talent Discovery & Scholarship Portal</span>
+            <span class="meta-badge" id="talent-count-badge">4 Verified Candidates</span>
+          </h2>
+          <p class="section-desc">
+            Search, filter, and scout exceptional high-school student portfolios based on verified athletic metrics, artistic achievements, and verified conduct scores. All communications are institutional and mediated.
+          </p>
+        </div>
+      </div>
+
+      <!-- Advanced Filtering Matrix -->
+      <div class="scout-controls-card">
+        <div class="filter-grid">
+          <!-- Category Select -->
+          <div class="filter-group">
+            <label class="filter-label" for="filter-category">Talent Domain</label>
+            <select class="filter-select" id="filter-category">
+              <option value="all">All Domains (Athletics, Football, Arts)</option>
+              <option value="Athletics">Athletics (Running & Track)</option>
+              <option value="Football">Team Sports (Football / Soccer)</option>
+              <option value="Drama">Creative Performing Arts (Drama)</option>
+            </select>
+          </div>
+
+          <!-- Age Range Filter (Targeting 14-16 as specified in Details 3) -->
+          <div class="filter-group">
+            <div class="filter-label">
+              <span>Age Range Filter</span>
+              <span class="range-val-badge" id="filter-age-val">14 - 18 yrs</span>
+            </div>
+            <div class="filter-range-wrap">
+              <input type="range" class="filter-range" id="filter-age-max" min="14" max="18" value="18" step="1" />
+            </div>
+          </div>
+
+          <!-- Verified Talent Rating Threshold -->
+          <div class="filter-group">
+            <div class="filter-label">
+              <span>Verified Metric Rating</span>
+              <span class="range-val-badge" id="filter-rating-val">85%+</span>
+            </div>
+            <div class="filter-range-wrap">
+              <input type="range" class="filter-range" id="filter-rating-min" min="70" max="98" value="85" step="1" />
+            </div>
+          </div>
+
+          <!-- Academic Conduct Score Threshold -->
+          <div class="filter-group">
+            <div class="filter-label">
+              <span>Conduct Score Threshold</span>
+              <span class="range-val-badge" id="filter-conduct-val">80%+</span>
+            </div>
+            <div class="filter-range-wrap">
+              <input type="range" class="filter-range" id="filter-conduct-min" min="60" max="95" value="80" step="5" />
+            </div>
+          </div>
+
+          <!-- Keyword Search -->
+          <div class="filter-group">
+            <label class="filter-label" for="filter-search">Candidate Search</label>
+            <input type="text" class="filter-input" id="filter-search" placeholder="Search by name, 5000m, striker, soloist..." />
+          </div>
+        </div>
+
+        <!-- Compliance Banner (Section 5: Data Minimization) -->
+        <div class="compliance-info-banner">
+          <div>
+            🔒 <strong>Minor Welfare Compliance (Section 5):</strong> Direct student contact numbers and home addresses are masked. Inquiries made through this portal are routed to the St. Jude High Administration & Club Patron for legal clearance.
+          </div>
+          <span style="white-space: nowrap; font-weight: 700;">Zero-Trust Minor Privacy</span>
+        </div>
+      </div>
+
+      <!-- Talent Grid Results -->
+      <div class="talent-cards-grid" id="scout-talent-grid">
+        <!-- Rendered dynamically by ScoutPortal.renderTalentGrid() -->
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         VIEW 2: CLUB PATRON & COACH OFFLINE CONSOLE (Module 1, 2, Section 4.1)
+         ======================================================================= -->
+    <section class="view-panel" id="view-patron">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <h2>
+            <span>📋 Club Patron & Coach Console</span>
+            <span class="meta-badge warning">Field Logging Ready</span>
+          </h2>
+          <p class="section-desc">
+            Record fixture outcomes, athletic sprint/split metrics, disciplinary records, and student creative portfolios. Works completely offline in remote stadiums and automatically synchronizes when connected to school network.
+          </p>
+        </div>
+      </div>
+
+      <!-- Subtabs for Patron -->
+      <div class="subtabs-nav">
+        <button class="subtab-btn active" data-subtab="patron-match-logger" type="button">
+          ⚽ Activity & Match Logger (Offline SQLite Mode)
+        </button>
+        <button class="subtab-btn" data-subtab="patron-creative-hub" type="button">
+          🎨 Creative Portfolio Hub (Media & Compression)
+        </button>
+      </div>
+
+      <!-- Subtab Pane 1: Activity & Match Logger -->
+      <div class="subtab-pane" id="patron-match-logger">
+        <div class="logger-layout">
+          <!-- Left: Logging Form -->
+          <div class="card-panel">
+            <h3 class="card-panel-title">
+              <span>Log Match / Event Record</span>
+              <span class="meta-badge" id="form-network-badge">Auto-Detecting Network</span>
+            </h3>
+
+            <form id="match-logger-form">
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label" for="logger-student-select">Select Student</label>
+                  <select class="form-select" id="logger-student-select" required></select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="logger-activity-type">Activity Category</label>
+                  <select class="form-select" id="logger-activity-type" required>
+                    <option value="Football">Football / Soccer</option>
+                    <option value="Athletics">Athletics / Long-Distance</option>
+                    <option value="Drama">Drama / Performing Arts</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="logger-fixture-select">Select Fixture / Tournament</label>
+                <select class="form-select" id="logger-fixture-select">
+                  <option value="County Championship vs Rift Valley Academy">County Championship vs Rift Valley Academy (Remote Pitch)</option>
+                  <option value="Regional Athletics Time Trials 5000m">Regional Athletics Time Trials 5000m (Afraha Stadium)</option>
+                  <option value="National Drama Gala Preliminaries">National Drama Gala Preliminaries</option>
+                </select>
+              </div>
+
+              <!-- Football specific dynamic inputs -->
+              <div class="form-grid-2" id="logger-football-fields">
+                <div class="form-group">
+                  <label class="form-label" for="logger-goals">Goals Scored</label>
+                  <input type="number" class="form-input" id="logger-goals" min="0" max="10" value="1" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="logger-assists">Assists</label>
+                  <input type="number" class="form-input" id="logger-assists" min="0" max="10" value="1" />
+                </div>
+                <div class="form-group" style="grid-column: 1 / -1;">
+                  <label class="form-label" for="logger-cards">Disciplinary Cards</label>
+                  <select class="form-select" id="logger-cards">
+                    <option value="None">None (Exemplary Conduct)</option>
+                    <option value="Yellow Card">Yellow Card (Minor Infraction)</option>
+                    <option value="Red Card">Red Card (Sent Off)</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Athletics specific dynamic inputs -->
+              <div class="form-grid-2" id="logger-athletics-fields" style="display: none;">
+                <div class="form-group">
+                  <label class="form-label" for="logger-distance">Event Distance</label>
+                  <input type="text" class="form-input" id="logger-distance" value="5000m" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="logger-time">Time Clocked (min:sec)</label>
+                  <input type="text" class="form-input" id="logger-time" placeholder="e.g. 14m 38s" />
+                </div>
+                <div class="form-group" style="grid-column: 1 / -1;">
+                  <label class="form-label" for="logger-position">Finishing Position</label>
+                  <input type="text" class="form-input" id="logger-position" placeholder="e.g. 1st Place (Gold)" />
+                </div>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label" for="logger-patron-name">Issuing Patron / Coach</label>
+                  <input type="text" class="form-input" id="logger-patron-name" value="Coach Evans Ochieng" readonly />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="logger-notes">Coach Remarks / Verification Notes</label>
+                  <input type="text" class="form-input" id="logger-notes" placeholder="e.g. Flawless sprint split, high tactical awareness" />
+                </div>
+              </div>
+
+              <button type="submit" class="btn-primary" style="width: 100%; margin-top: 0.5rem;">
+                <span>💾 Save Record (Writes to Local SQLite / Cloud)</span>
+              </button>
+            </form>
+          </div>
+
+          <!-- Right: Local Persistence Queue & Global Ledger Status -->
+          <div class="card-panel">
+            <h3 class="card-panel-title">
+              <span>Local SQLite Transaction Queue</span>
+              <span class="meta-badge purple">Offline Ledger</span>
+            </h3>
+
+            <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.75rem;">
+              Demonstrates Section 4.1: When coaching in a remote field with zero cellular coverage, records are assigned auto-incrementing transactional IDs with status <code>Pending_Sync</code>. Upon reconnecting, the background sync service pushes records to the global cloud server.
+            </p>
+
+            <div class="data-table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Tx ID</th>
+                    <th>Timestamp</th>
+                    <th>Student</th>
+                    <th>Event Details</th>
+                    <th>Status</th>
+                    <th>Ledger Hash</th>
+                  </tr>
+                </thead>
+                <tbody id="transaction-queue-tbody">
+                  <!-- Rendered dynamically by MatchLogger.renderQueueTable() -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Subtab Pane 2: Creative Portfolio Hub (Module 2) -->
+      <div class="subtab-pane" id="patron-creative-hub" style="display: none;">
+        <div class="logger-layout">
+          <div class="card-panel">
+            <h3 class="card-panel-title">
+              <span>Upload Student Creative Media</span>
+              <span class="meta-badge">Local Compression Active</span>
+            </h3>
+
+            <form id="creative-upload-form">
+              <div class="form-group">
+                <label class="form-label" for="creative-student-select">Student Artist</label>
+                <select class="form-select" id="creative-student-select">
+                  <option value="STU-7432">Amina Wanjiku (STU-7432) - Theatrical Drama</option>
+                  <option value="STU-8821">Dennis Kipruto (STU-8821) - Athletics Highlights</option>
+                  <option value="STU-9104">Brian Omondi (STU-9104) - Match Reel</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="creative-category">Media Domain</label>
+                <select class="form-select" id="creative-category">
+                  <option value="Drama">Theatrical Performance Clip (Video)</option>
+                  <option value="Music">Orchestra / Vocal Audio Recording (Lossless)</option>
+                  <option value="Art">High-Resolution Visual Art Piece (Image)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="creative-title">Performance Title</label>
+                <input type="text" class="form-input" id="creative-title" placeholder="e.g. National Solo Verse 'Echoes of Hope'" required />
+              </div>
+
+              <div class="upload-dropzone" onclick="document.getElementById('mock-file-input').click()">
+                <input type="file" id="mock-file-input" style="display: none;" />
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">📁</div>
+                <strong style="color: var(--text-highlight); font-size: 0.95rem;">Drag & drop video snippet, audio file, or artwork</strong>
+                <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 4px;">Supports MP4, WAV, High-Res PNG (Automatic client-side compression pipeline)</p>
+              </div>
+
+              <div class="compression-pipeline-visual">
+                <div>
+                  <strong>Edge Compression Status:</strong>
+                  <span style="color: #34d399;">24.2 MB &rarr; 4.1 MB (83% reduction)</span>
+                </div>
+                <span class="badge-status synced">Pointer Queued</span>
+              </div>
+
+              <button type="submit" class="btn-primary" style="width: 100%; margin-top: 1.25rem;">
+                <span>Queue Binary Media for Background Sync</span>
+              </button>
+            </form>
+          </div>
+
+          <div class="card-panel">
+            <h3 class="card-panel-title">
+              <span>Synced Media Asset Repository</span>
+            </h3>
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+              <div style="background: #080c14; border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 1rem; display: flex; align-items: center; gap: 1rem;">
+                <img src="assets/drama_performer.jpg" style="width: 70px; height: 70px; border-radius: var(--radius-sm); object-fit: cover;" />
+                <div style="flex: 1;">
+                  <strong style="color: var(--text-highlight); font-size: 0.9rem;">National Drama Monologue - Amina Wanjiku</strong>
+                  <p style="font-size: 0.75rem; color: var(--text-muted);">Format: H.264 Compressed • Length: 3m 45s • Bitrate: 1.8 Mbps</p>
+                  <span class="meta-badge" style="font-size: 0.68rem; margin-top: 4px;">Local Pointer: /media/stj_drm_7432.mp4</span>
+                </div>
+              </div>
+
+              <div style="background: #080c14; border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 1rem; display: flex; align-items: center; gap: 1rem;">
+                <img src="assets/football_star.jpg" style="width: 70px; height: 70px; border-radius: var(--radius-sm); object-fit: cover;" />
+                <div style="flex: 1;">
+                  <strong style="color: var(--text-highlight); font-size: 0.9rem;">Sub-County Match Reel - Brian Omondi</strong>
+                  <p style="font-size: 0.75rem; color: var(--text-muted);">Format: H.264 Compressed • Length: 2m 10s • Bitrate: 2.1 Mbps</p>
+                  <span class="meta-badge" style="font-size: 0.68rem; margin-top: 4px;">Local Pointer: /media/stj_ftb_9104.mp4</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         VIEW 3: SCHOOL ADMINISTRATOR & CREDENTIALING ENGINE (Module 3, Section 5)
+         ======================================================================= -->
+    <section class="view-panel" id="view-admin">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <h2>
+            <span>🏛️ School Administrator & Credentialing Engine</span>
+            <span class="meta-badge">Authority Node</span>
+          </h2>
+          <p class="section-desc">
+            Issue cryptographically signed digital badges (SHA-256), verify tamper-evident signatures, and moderate incoming scout scholarship inquiries under minor welfare guidelines.
+          </p>
+        </div>
+      </div>
+
+      <!-- Subtabs for Admin -->
+      <div class="subtabs-nav">
+        <button class="subtab-btn active" data-subtab="admin-issue-badges" type="button">
+          🛡️ Digital Badge & Credentialing Engine (SHA-256)
+        </button>
+        <button class="subtab-btn" data-subtab="admin-tamper-check" type="button">
+          🔍 Tamper-Evident Hash Validator & Test
+        </button>
+        <button class="subtab-btn" data-subtab="admin-outreach-moderation" type="button">
+          📬 Scout Outreach Mediation Gate
+        </button>
+      </div>
+
+      <!-- Subtab Pane 1: Issue Badges -->
+      <div class="subtab-pane" id="admin-issue-badges">
+        <div class="admin-grid">
+          <!-- Left: Issue Form -->
+          <div class="card-panel">
+            <h3 class="card-panel-title">
+              <span>Mint Cryptographic Student Badge</span>
+              <span class="meta-badge">SHA-256 Algorithm</span>
+            </h3>
+
+            <form id="issue-badge-form">
+              <div class="form-group">
+                <label class="form-label" for="badge-student-select">Student Recipient</label>
+                <select class="form-select" id="badge-student-select" required></select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="badge-title-input">Badge / Credential Title</label>
+                <input type="text" class="form-input" id="badge-title-input" placeholder="e.g. County Football MVP or National Drama Gold Medalist" required />
+              </div>
+
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label" for="badge-category-select">Category</label>
+                  <select class="form-select" id="badge-category-select">
+                    <option value="Athletics">Athletics</option>
+                    <option value="Football">Football</option>
+                    <option value="Performing Arts">Performing Arts / Drama</option>
+                    <option value="STEM & Innovation">STEM & Innovation</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="badge-patron-id">Issuing Authority / Patron ID</label>
+                  <input type="text" class="form-input" id="badge-patron-id" value="Dr. Margaret Kosgey (STJ-ADM-01)" readonly />
+                </div>
+              </div>
+
+              <button type="submit" class="btn-primary" style="width: 100%; margin-top: 0.5rem;">
+                <span>🛡️ Sign & Issue Verifiable Badge</span>
+              </button>
+            </form>
+
+            <div id="newly-issued-hash-display" class="crypto-hash-box" style="display: none; margin-top: 1rem;"></div>
+          </div>
+
+          <!-- Right: Architecture Explainer of Credentialing -->
+          <div class="card-panel">
+            <h3 class="card-panel-title">
+              <span>Section 5 Cryptographic Blueprint</span>
+            </h3>
+            <p style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.6;">
+              In accordance with <strong>Section 5 (Tamper-Evident Records)</strong>, every badge and milestone log incorporates cryptographic signatures:
+            </p>
+            
+            <div class="crypto-hash-box" style="margin: 1rem 0;">
+              SHA256( studentId + "|" + patronId + "|" + timestamp + "|" + credentialTitle )
+            </div>
+
+            <p style="font-size: 0.8rem; color: #94a3b8; line-height: 1.5;">
+              This mathematical hash creates an immutable digital fingerprint. If anyone attempts to manipulate scores, inflate goals, or modify badges directly in the local offline database, the hash verification immediately flags the record as tampered and invalid.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Subtab Pane 2: Tamper-Evident Validator -->
+      <div class="subtab-pane" id="admin-tamper-check" style="display: none;">
+        <div class="admin-grid">
+          <div class="card-panel">
+            <h3 class="card-panel-title">
+              <span>Cryptographic Hash Integrity Checker</span>
+            </h3>
+
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">
+              Paste any SHA-256 hash or certificate token to inspect its legitimacy against the St. Jude High School authenticated ledger.
+            </p>
+
+            <div class="form-group">
+              <label class="form-label" for="verify-hash-input">SHA-256 Hash to Verify</label>
+              <input type="text" class="form-input" id="verify-hash-input" placeholder="Paste hash here (e.g. c2810f9b36e88941bb380536c4b998cfb61394f4c80327f311c62f2756a1622b)" />
+            </div>
+
+            <div style="display: flex; gap: 0.75rem;">
+              <button class="btn-primary" id="btn-run-verify" type="button">
+                <span>Run Verification Audit</span>
+              </button>
+              <button class="btn-secondary" type="button" onclick="document.getElementById('verify-hash-input').value = 'c2810f9b36e88941bb380536c4b998cfb61394f4c80327f311c62f2756a1622b'; AdminModule.runHashVerification();">
+                Load Sample Authentic Hash
+              </button>
+            </div>
+
+            <div id="verify-result-box" style="display: none; margin-top: 1rem; padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-card);"></div>
+          </div>
+
+          <!-- Interactive Tamper Simulator -->
+          <div class="card-panel">
+            <h3 class="card-panel-title">
+              <span>Assessor Tamper Prevention Test</span>
+              <span class="meta-badge warning">Interactive Test</span>
+            </h3>
+
+            <p style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5;">
+              Click below to simulate what happens if a bad actor attempts to edit the local SQLite database to alter a student's match score or title without patron authorization:
+            </p>
+
+            <div class="tamper-test-box">
+              <div class="tamper-test-header">
+                <strong>Simulate Malicious Record Tampering</strong>
+                <button class="btn-secondary" id="btn-run-tamper-demo" type="button" style="border-color: #f43f5e; color: #fca5a5;">
+                  Execute Tamper Test
+                </button>
+              </div>
+              <div id="tamper-demo-output" style="display: none; margin-top: 0.75rem;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Subtab Pane 3: Scout Outreach Mediation Gate -->
+      <div class="subtab-pane" id="admin-outreach-moderation" style="display: none;">
+        <div class="card-panel">
+          <h3 class="card-panel-title">
+            <span>Institutional Scout Outreach Moderation Gate</span>
+            <span class="meta-badge purple">Minor Protection Layer</span>
+          </h3>
+
+          <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">
+            Complies with Section 4.2 & Section 5: External scouts cannot directly contact student minors. All scholarship proposals and inquiries are held in this queue until approved by Principal Dr. Margaret Kosgey and the designated club patron.
+          </p>
+
+          <div class="data-table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Inquiry ID</th>
+                  <th>Date</th>
+                  <th>Student Candidate</th>
+                  <th>Scout Organization</th>
+                  <th>Message / Proposal</th>
+                  <th>Compliance Status</th>
+                  <th>Admin Action</th>
+                </tr>
+              </thead>
+              <tbody id="admin-inquiries-tbody">
+                <!-- Rendered dynamically by AdminModule.renderInquiriesTable() -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         VIEW 4: STUDENT & PARENT CUMULATIVE CV (Section 5 RBAC)
+         ======================================================================= -->
+    <section class="view-panel" id="view-student">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <h2>
+            <span>🎓 Student Cumulative Co-Curricular Portfolio</span>
+            <span class="meta-badge">Verified Dossier</span>
+          </h2>
+          <p class="section-desc">
+            The student's official, verified co-curricular transcript highlighting athletic records, performing arts achievements, verifiable digital badges, and approved scout opportunities.
+          </p>
+        </div>
+      </div>
+
+      <div id="student-cv-content">
+        <!-- Rendered dynamically by App.renderStudentCV() -->
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         VIEW 5: ASSESSOR SYSTEM BLUEPRINT & ARCHITECTURE SPEC (All Details 1-4)
+         ======================================================================= -->
+    <section class="view-panel" id="view-blueprint">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <h2>
+            <span>📐 System Architecture & Prototype Blueprint</span>
+            <span class="meta-badge purple">Assessor Review Mode</span>
+          </h2>
+          <p class="section-desc">
+            Comprehensive system specification, component breakdown, data flow models, and compliance architecture implemented in Jane's project based on requirement specifications (Details 1 to 4).
+          </p>
+        </div>
+      </div>
+
+      <!-- Section 3 Breakdown -->
+      <div class="blueprint-card">
+        <h3 style="font-size: 1.25rem; color: #60a5fa; margin-bottom: 0.75rem;">3. Core Modules & Feature Breakdown</h3>
+        <div class="data-table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Module</th>
+                <th>Target User</th>
+                <th>Core Functionality</th>
+                <th>Offline Behavior</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Activity & Match Logger</strong></td>
+                <td>Club Patrons / Coaches</td>
+                <td>Record match scores, athletic metrics (e.g., sprint times, goals), attendance, and event participation.</td>
+                <td>Stores entries in local queue with auto-incrementing transactional IDs (`TX-1049`).</td>
+              </tr>
+              <tr>
+                <td><strong>Creative Portfolio Hub</strong></td>
+                <td>Art / Drama / Music Patrons</td>
+                <td>Upload high-res images of artwork, audio recordings of music pieces, or video snippets of theatrical performances.</td>
+                <td>Compresses media locally and stores file pointers; queues binary uploads for background sync.</td>
+              </tr>
+              <tr>
+                <td><strong>Digital Badge & Credentialing Engine</strong></td>
+                <td>Administrators / Extracurricular Heads</td>
+                <td>Issue verifiable badges (e.g., "County Football MVP", "National Drama Gold Medalist") signed cryptographically.</td>
+                <td>Generates local cryptographic hashes (SHA-256) and certificates offline.</td>
+              </tr>
+              <tr>
+                <td><strong>Talent Scouting Portal</strong></td>
+                <td>External Scouts & Institutions</td>
+                <td>Search, filter, and view student portfolios based on verified metrics, skills, and geographic data.</td>
+                <td>Read-only cached view of previously synced profiles (requires connection for live queries).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Section 4 Breakdown -->
+      <div class="blueprint-card">
+        <h3 style="font-size: 1.25rem; color: #34d399; margin-bottom: 0.75rem;">4. User Journey & Workflow Models</h3>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem;">
+          <div style="background: rgba(0,0,0,0.3); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+            <h4 style="color: #60a5fa; margin-bottom: 0.75rem;">4.1 Patron Workflow (Logging a Match Offline)</h4>
+            <ol style="padding-left: 1.25rem; font-size: 0.85rem; display: flex; flex-direction: column; gap: 8px; color: var(--text-secondary);">
+              <li><strong>Event Setup:</strong> The football coach opens the app on a tablet while at a remote tournament field with zero cellular coverage.</li>
+              <li><strong>Data Entry:</strong> The coach selects the fixture, inputs goals scored, lists assists, and logs disciplinary records for each player.</li>
+              <li><strong>Local Persistence:</strong> The application writes the records directly to the local SQLite database, marking the transaction status as <code>Pending_Sync</code>.</li>
+              <li><strong>Automatic Synchronization:</strong> Days later, when the tablet connects to school Wi-Fi or cellular data, the background sync pushes payload to cloud server, reconciling IDs and updating the global ledger without user intervention.</li>
+            </ol>
+          </div>
+
+          <div style="background: rgba(0,0,0,0.3); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+            <h4 style="color: #c084fc; margin-bottom: 0.75rem;">4.2 Scout Workflow (Talent Discovery)</h4>
+            <ol style="padding-left: 1.25rem; font-size: 0.85rem; display: flex; flex-direction: column; gap: 8px; color: var(--text-secondary);">
+              <li><strong>Filtering:</strong> A high school sports scholarship coordinator filters the database for students aged 14 to 16 with a verified rating in long-distance running and an academic conduct score above a set threshold.</li>
+              <li><strong>Portfolio Review:</strong> The scout views the candidate's verified timeline, watches compressed performance video clips, and reviews official certificates issued by school patrons.</li>
+              <li><strong>Secure Outreach:</strong> The scout initiates an encrypted inquiry through the platform, which routes a notification to the school principal and activity patron for approval.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 5 Breakdown -->
+      <div class="blueprint-card">
+        <h3 style="font-size: 1.25rem; color: #fbbf24; margin-bottom: 0.75rem;">5. Security, Privacy, and Compliance</h3>
+        
+        <div style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.85rem;">
+          <div style="background: rgba(0,0,0,0.25); padding: 1rem; border-radius: var(--radius-md); border-left: 4px solid var(--accent-blue);">
+            <strong style="color: var(--text-highlight); font-size: 0.95rem;">Data Minimization & Minor Protection</strong>
+            <p style="color: var(--text-secondary); margin-top: 4px;">
+              Because users are minors, personally identifiable information (PII) such as home addresses and precise contact details are masked. Communication between scouts and students is strictly mediated through institutional accounts (Patrons/Administrators).
+            </p>
+          </div>
+
+          <div style="background: rgba(0,0,0,0.25); padding: 1rem; border-radius: var(--radius-md); border-left: 4px solid var(--accent-emerald);">
+            <strong style="color: var(--text-highlight); font-size: 0.95rem;">Tamper-Evident Records</strong>
+            <p style="color: var(--text-secondary); margin-top: 4px;">
+              Badges and milestone logs incorporate cryptographic signatures (SHA-256 hashes linking student ID, timestamp, and issuing patron ID), preventing unauthorized local database manipulation.
+            </p>
+          </div>
+
+          <div style="background: rgba(0,0,0,0.25); padding: 1rem; border-radius: var(--radius-md); border-left: 4px solid var(--accent-purple);">
+            <strong style="color: var(--text-highlight); font-size: 0.95rem;">Role-Based Access Control (RBAC)</strong>
+            <ul style="padding-left: 1.25rem; margin-top: 6px; display: flex; flex-direction: column; gap: 4px; color: var(--text-secondary);">
+              <li><strong>Students/Parents:</strong> Read-only access to their own cumulative portfolio.</li>
+              <li><strong>Patrons/Coaches:</strong> Write/Edit access for their specific assigned clubs and matches.</li>
+              <li><strong>Administrators:</strong> School-wide oversight and verification rights.</li>
+              <li><strong>Scouts:</strong> Read access limited to public-facing talent profiles approved for recruitment pools.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================================
+       MODAL 1: STUDENT VERIFIED DOSSIER MODAL
+       ========================================================================= -->
+  <div class="modal-backdrop" id="student-dossier-modal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title">Official Student Co-Curricular Dossier</h3>
+        <button class="modal-close-btn" type="button" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body" id="dossier-modal-content">
+        <!-- Rendered dynamically by ScoutPortal.openDossier() -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary btn-modal-close" type="button">Close Dossier</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL 2: SECURE SCOUT OUTREACH INQUIRY MODAL (Section 4.2 Step 3)
+       ========================================================================= -->
+  <div class="modal-backdrop" id="outreach-inquiry-modal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title">Submit Encrypted Scout / Scholarship Inquiry</h3>
+        <button class="modal-close-btn" type="button" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
+          In accordance with minor protection compliance, this proposal will be routed to the St. Jude Senior High School Administration & Activity Patron before the student guardian is contacted.
+        </p>
+
+        <form id="scout-inquiry-form">
+          <input type="hidden" id="inquiry-student-id" />
+          
+          <div class="form-group">
+            <label class="form-label">Selected Candidate</label>
+            <div id="inquiry-student-name-display" style="padding: 8px 12px; background: rgba(255,255,255,0.05); border-radius: var(--radius-sm); font-weight: 700; color: #60a5fa;"></div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="inquiry-scout-org">Scout / Institution Name</label>
+              <input type="text" class="form-input" id="inquiry-scout-org" value="East African Sports Talent Trust" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="inquiry-scout-rep">Representative Name</label>
+              <input type="text" class="form-input" id="inquiry-scout-rep" value="David Mwamburi (Accredited Scout)" required />
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="inquiry-type">Opportunity Classification</label>
+              <select class="form-select" id="inquiry-type">
+                <option value="Full High School Scholarship">Full High School Sports Scholarship</option>
+                <option value="National Youth Trial Invitation">National Youth Trial Invitation</option>
+                <option value="Performing Arts Academy Fellowship">Performing Arts Academy Fellowship</option>
+                <option value="Corporate Sponsorship & Kit">Corporate Sponsorship & Kit</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="inquiry-terms">Proposed Terms Summary</label>
+              <input type="text" class="form-input" id="inquiry-terms" value="Full Tuition + Sports Gear + National Coaching" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="inquiry-message">Formal Inquiry Details / Proposal Letter</label>
+            <textarea class="form-textarea" id="inquiry-message" rows="4" placeholder="Explain the scholarship or scouting opportunity, requirements, and institutional benefits..." required>We have evaluated the candidate's verified timing and disciplinary history. We would like to officially offer an athletic development scholarship and invite the candidate to our regional training clinic.</textarea>
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1rem;">
+            <button type="button" class="btn-secondary btn-modal-close">Cancel</button>
+            <button type="submit" class="btn-primary">
+              <span>🔒 Dispatch Encrypted Inquiry to Administration</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div>
+      <strong>TALENTLINK</strong> &bull; Co-Curricular Tracking and Talent Scouting Platform &bull; Jane's Project
+    </div>
+    <div class="footer-meta-tags">
+      <span>Offline SQLite Queue Active</span> &bull;
+      <span>SHA-256 Tamper-Evident Hashing</span> &bull;
+      <span>Zero-Trust Minor Privacy (COPPA/GDPR-K)</span> &bull;
+      <span>Institutional Mediation Gate</span>
+    </div>
+  </footer>
+
+  <!-- Application Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/crypto.js"></script>
+  <script src="js/logger.js"></script>
+  <script src="js/scout.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
