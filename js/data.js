@@ -1,375 +1,611 @@
 /**
- * TALENTLINK - Data Store & Mock Data Repository
- * Co-Curricular Tracking and Talent Scouting Platform
+ * TALENTLINK & SCOUTING PLATFORM
+ * Seed Data & Domain Models
+ * Categories:
+ * 1. Sports (Indoor): Table Tennis, Badminton, Lawn Tennis, Chess, Basketball
+ * 2. Sports (Outdoor): Football, Rugby, Volleyball, Hockey, Athletics, Handball
+ * 3. Music and Drama: Choral & Solo Singing, Instrumental, Spoken Word & Poetry, Stage Drama, Cultural Dance
+ * Feeders: Referee (Sports), Adjudicator (Music & Drama), Judge (Music & Drama)
  */
 
-const TALENT_DATA = {
-  school: {
-    name: "St. Jude Senior High School",
-    code: "STJ-KE-042",
-    region: "Rift Valley / Nakuru County",
-    principal: "Dr. Margaret Kosgey (Mediation Officer)",
-    sportsPatron: "Coach Evans Ochieng (Licensed CAF-B)",
-    dramaPatron: "Ms. Beatrice Mwangi (National Adjudicator)"
+const TL_DATA = {
+  categories: {
+    indoorSports: {
+      id: "indoor_sports",
+      name: "Sports (Indoor Category)",
+      badge: "Indoor Arena",
+      icon: "🏸",
+      activities: [
+        { id: "table_tennis", name: "Table Tennis", type: "Racket Sport", icon: "🏓" },
+        { id: "badminton", name: "Badminton", type: "Racket Sport", icon: "🏸" },
+        { id: "lawn_tennis", name: "Lawn Tennis", type: "Racket Sport (Indoor Court)", icon: "🎾" },
+        { id: "chess", name: "Chess", type: "Board & Strategy", icon: "♟️" },
+        { id: "basketball", name: "Basketball", type: "Court Sport", icon: "🏀" }
+      ]
+    },
+    outdoorSports: {
+      id: "outdoor_sports",
+      name: "Sports (Outdoor Category)",
+      badge: "Outdoor Field",
+      icon: "⚽",
+      activities: [
+        { id: "football", name: "Football", type: "Pitch Sport", icon: "⚽" },
+        { id: "rugby", name: "Rugby", type: "Contact Pitch Sport", icon: "🏉" },
+        { id: "volleyball", name: "Volleyball", type: "Court/Sand Sport", icon: "🏐" },
+        { id: "hockey", name: "Hockey", type: "Turf Sport", icon: "🏑" },
+        { id: "athletics", name: "Athletics", type: "Track & Field", icon: "🏃" },
+        { id: "handball", name: "Handball", type: "Team Field Sport", icon: "🤾" }
+      ]
+    },
+    musicAndDrama: {
+      id: "music_drama",
+      name: "Music and Drama",
+      badge: "Performing Arts",
+      icon: "🎭",
+      activities: [
+        { id: "choral_vocal", name: "Choral & Solo Singing", type: "Vocal Arts", icon: "🎤" },
+        { id: "instrumental", name: "Instrumental & Ensembles", type: "Music Performance", icon: "🎻" },
+        { id: "spoken_word", name: "Spoken Word & Poetry", type: "Literary Performing Art", icon: "📜" },
+        { id: "stage_drama", name: "Stage Drama & Plays", type: "Theatrical Arts", icon: "🎭" },
+        { id: "cultural_dance", name: "Cultural Dance & Movement", type: "Folk & Creative Dance", icon: "💃" }
+      ]
+    }
   },
 
-  students: [
+  // Role profiles and credentials
+  defaultUsers: [
     {
-      id: "STU-8821",
-      name: "Dennis Kipruto",
-      age: 15,
-      gender: "Male",
-      grade: "Form 2 (Grade 10)",
-      category: "Athletics",
-      discipline: "Long-Distance Running (3000m / 5000m)",
-      verifiedRating: 96,
-      academicConduct: 93,
-      avatar: "assets/athlete_marathon.jpg",
-      status: "Active Pool",
-      guardianMediation: "School Principal & Coach Evans Ochieng",
-      maskedAddress: "Nakuru County, Rift Valley [Masked - Minor Protection]",
-      keyStats: {
-        pb5000m: "14m 42s",
-        pb3000m: "8m 19s",
-        vo2max: "74 ml/kg/min",
-        attendanceRate: "98%"
-      },
-      radar: {
-        endurance: 98,
-        speedPace: 92,
-        tacticalDiscipline: 94,
-        resilience: 96,
-        academicBalance: 93
-      },
-      badges: [
-        {
-          id: "BDG-ATH-01",
-          title: "Regional 5000m Record Holder",
-          category: "Athletics",
-          date: "2026-03-12",
-          issuer: "Coach Evans Ochieng (STJ-PAT-01)",
-          hash: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-          verified: true
-        },
-        {
-          id: "BDG-ATH-02",
-          title: "County Cross-Country Gold Medalist",
-          category: "Athletics",
-          date: "2026-06-18",
-          issuer: "Principal Dr. Margaret Kosgey",
-          hash: "a4f89d3118ef612349bf4c8996fb92427ae41e4649b934ca495991b78912ef01",
-          verified: true
-        }
-      ],
-      timeline: [
-        {
-          date: "2026-08-24",
-          event: "Inter-County Championship 5000m Finals",
-          result: "1st Place (Gold)",
-          verifiedBy: "Coach Evans Ochieng",
-          notes: "Broke school record by 4 seconds. Negative split executed flawlessly."
-        },
-        {
-          date: "2026-06-18",
-          event: "Rift Valley Cross-Country 8km Trial",
-          result: "Gold Medal (23m 15s)",
-          verifiedBy: "Principal Dr. Margaret Kosgey",
-          notes: "Official qualification time for National High School Trials."
-        }
-      ],
-      media: [
-        {
-          title: "5000m Sprint Finish Final Lap",
-          type: "video",
-          thumbnail: "assets/athlete_marathon.jpg",
-          duration: "1m 14s",
-          size: "4.8 MB (Compressed locally)"
-        }
-      ]
+      id: "ref_1",
+      role: "referee",
+      roleName: "Sports Referee",
+      name: "Coach Benson Makau",
+      title: "Senior Sports Referee & Match Commissioner",
+      badge: "Official Referee (Sports)",
+      institution: "Metropolitan Interschool Athletic Union",
+      assignedScope: "All Indoor & Outdoor Sports",
+      avatar: "👨‍⚖️"
     },
     {
-      id: "STU-9104",
-      name: "Brian Omondi",
+      id: "adj_1",
+      role: "adjudicator",
+      roleName: "Music & Drama Adjudicator",
+      name: "Dr. Evelyn Wanjiku",
+      title: "Senior Arts Adjudicator & Performance Critic",
+      badge: "Official Adjudicator (Music & Drama)",
+      institution: "National Performing Arts & Music Festival Board",
+      assignedScope: "Music & Drama Rubrics",
+      avatar: "👩‍🏫"
+    },
+    {
+      id: "judge_1",
+      role: "judge",
+      roleName: "Festival Judge",
+      name: "Justice Michael Kioko",
+      title: "Chief Competition Judge & Awards Assessor",
+      badge: "Official Judge (Music & Drama)",
+      institution: "All-County Drama & Music Championship",
+      assignedScope: "Competitive Ranking & Badges",
+      avatar: "⚖️"
+    },
+    {
+      id: "scout_1",
+      role: "scout",
+      roleName: "Talent Scout",
+      name: "Marcus Vance",
+      title: "Head Scout & Athletic Director",
+      badge: "Verified Scout / Recruiter",
+      institution: "Apex Collegiate Talent & Academy",
+      assignedScope: "Talent Identification & Outreach",
+      avatar: "🔍"
+    },
+    {
+      id: "stu_1",
+      role: "student",
+      roleName: "Student Talent",
+      name: "Tariq Omari",
+      title: "Multi-Disciplinary Athlete & Performer",
+      badge: "Active Student Talent",
+      institution: "St. Jude Senior Academy",
+      assignedScope: "Basketball (Indoor) & Stage Drama",
+      avatar: "⭐"
+    },
+    {
+      id: "admin_1",
+      role: "admin",
+      roleName: "School Administrator",
+      name: "Principal Florence Adhiambo",
+      title: "School Principal & Institutional Verifier",
+      badge: "Institutional Admin",
+      institution: "St. Jude Senior Academy",
+      assignedScope: "Compliance, Badges & Scout Permissions",
+      avatar: "🏛️"
+    }
+  ],
+
+  // Talents / Students catalog
+  talents: [
+    {
+      id: "TL-STU-101",
+      name: "Tariq Omari",
       age: 16,
-      gender: "Male",
-      grade: "Form 3 (Grade 11)",
-      category: "Football",
-      discipline: "Striker / Attacking Playmaker",
-      verifiedRating: 94,
-      academicConduct: 88,
-      avatar: "assets/football_star.jpg",
-      status: "Active Pool",
-      guardianMediation: "School Principal & Coach Evans Ochieng",
-      maskedAddress: "Nakuru East Sub-County [Masked - Minor Protection]",
-      keyStats: {
-        goalsThisSeason: 18,
-        assists: 12,
-        sprint100m: "11.2s",
-        matchesPlayed: 14
+      grade: "Grade 11",
+      school: "St. Jude Senior Academy",
+      primaryCategory: "indoor_sports",
+      activityId: "basketball",
+      activityName: "Basketball",
+      secondaryActivity: "Stage Drama & Plays",
+      position: "Point Guard / Theatrical Lead",
+      overallRating: 94,
+      verifiedMatches: 18,
+      verifiedBadges: ["County MVP 2025", "Best Stage Actor Silver", "State Playmaker"],
+      metrics: {
+        agility: 92,
+        technique: 95,
+        stamina: 89,
+        leadership: 96,
+        discipline: 98
       },
-      radar: {
-        endurance: 89,
-        speedPace: 96,
-        tacticalDiscipline: 91,
-        resilience: 90,
-        academicBalance: 88
-      },
-      badges: [
-        {
-          id: "BDG-FTB-01",
-          title: "County Football MVP",
-          category: "Football",
-          date: "2026-05-30",
-          issuer: "Coach Evans Ochieng (STJ-PAT-01)",
-          hash: "c2810f9b36e88941bb380536c4b998cfb61394f4c80327f311c62f2756a1622b",
-          verified: true
-        },
-        {
-          id: "BDG-FTB-02",
-          title: "Golden Boot Winner - Sub-County League",
-          category: "Football",
-          date: "2026-07-14",
-          issuer: "Principal Dr. Margaret Kosgey",
-          hash: "7f83b1657ff1fc53b92dc18148a1d65dfc2d4b1fa3d677284addd200126d9069",
-          verified: true
-        }
-      ],
-      timeline: [
-        {
-          date: "2026-09-02",
-          event: "Sub-County Finals vs. Menengai High",
-          result: "Scored 2 Goals, 1 Assist (Won 3-1)",
-          verifiedBy: "Coach Evans Ochieng",
-          notes: "Man of the Match. Exceptional off-the-ball movement."
-        },
-        {
-          date: "2026-07-14",
-          event: "Regional Youth Tournament",
-          result: "Top Scorer Award",
-          verifiedBy: "Coach Evans Ochieng",
-          notes: "Maintained 0 disciplinary infractions across all 6 fixtures."
-        }
-      ],
-      media: [
-        {
-          title: "Match Highlights: Free-Kick & Assist Reel",
-          type: "video",
-          thumbnail: "assets/football_star.jpg",
-          duration: "2m 10s",
-          size: "6.2 MB (Compressed locally)"
-        }
-      ]
+      statsSummary: "18.4 PPG, 8.2 APG, 3.1 SPG • County Drama Finals Lead Actor",
+      bio: "High basketball IQ with exceptional court vision and natural stage charisma. Strong academic standing with exemplary conduct.",
+      videoReel: {
+        title: "County Semifinals Highlights & Drama Monologue",
+        duration: "02:45",
+        verifiedBy: "Referee Benson Makau & Adjudicator Evelyn Wanjiku",
+        thumbnailBg: "linear-gradient(135deg, #1e3a8a, #0f766e)"
+      }
     },
     {
-      id: "STU-7432",
-      name: "Amina Wanjiku",
+      id: "TL-STU-102",
+      name: "Amina Cherotich",
       age: 15,
-      gender: "Female",
-      grade: "Form 2 (Grade 10)",
-      category: "Drama",
-      discipline: "Theatrical Drama & Solo Verse",
-      verifiedRating: 98,
-      academicConduct: 96,
-      avatar: "assets/drama_performer.jpg",
-      status: "Active Pool",
-      guardianMediation: "School Principal & Ms. Beatrice Mwangi",
-      maskedAddress: "Rift Valley Region [Masked - Minor Protection]",
-      keyStats: {
-        stagePerformances: 16,
-        vocalProjectionScore: "99/100",
-        emotionalRangeScore: "97/100",
-        academicRank: "Top 5%"
+      grade: "Grade 10",
+      school: "Rift Valley High",
+      primaryCategory: "outdoor_sports",
+      activityId: "athletics",
+      activityName: "Athletics",
+      secondaryActivity: "Cultural Dance",
+      position: "Middle Distance (800m / 1500m)",
+      overallRating: 97,
+      verifiedMatches: 14,
+      verifiedBadges: ["National Gold 800m", "Endurance Standard Exceeded"],
+      metrics: {
+        agility: 94,
+        technique: 98,
+        stamina: 99,
+        leadership: 88,
+        discipline: 100
       },
-      radar: {
-        endurance: 92,
-        speedPace: 88,
-        tacticalDiscipline: 97,
-        resilience: 99,
-        academicBalance: 96
-      },
-      badges: [
-        {
-          id: "BDG-DRM-01",
-          title: "National Drama Gold Medalist",
-          category: "Performing Arts",
-          date: "2026-04-10",
-          issuer: "Ms. Beatrice Mwangi (STJ-PAT-03)",
-          hash: "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
-          verified: true
-        },
-        {
-          id: "BDG-DRM-02",
-          title: "Best Solo Orator of the Year",
-          category: "Performing Arts",
-          date: "2026-08-05",
-          issuer: "Principal Dr. Margaret Kosgey",
-          hash: "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a",
-          verified: true
-        }
-      ],
-      timeline: [
-        {
-          date: "2026-08-05",
-          event: "Kenya National Drama Festival - Gala Performance",
-          result: "1st Trophy & National Commendation",
-          verifiedBy: "Ms. Beatrice Mwangi",
-          notes: "Audience standing ovation for original theatrical poem 'Echoes of tomorrow'."
-        },
-        {
-          date: "2026-04-10",
-          event: "County Creative Monologue Showcase",
-          result: "Gold Medal Honors",
-          verifiedBy: "Principal Dr. Margaret Kosgey",
-          notes: "Adjudicated with highest mark in vocal articulation and stagecraft."
-        }
-      ],
-      media: [
-        {
-          title: "National Gala Monologue Recording",
-          type: "audio/video",
-          thumbnail: "assets/drama_performer.jpg",
-          duration: "3m 45s",
-          size: "7.1 MB (Compressed locally)"
-        }
-      ]
+      statsSummary: "800m PB: 2:02.14 • 1500m PB: 4:18.30 • Sub-County Record Holder",
+      bio: "Elite pace judgment and finishing kick. Coached under high-altitude training program with flawless attendance.",
+      videoReel: {
+        title: "800m Interschool Championship Final Lap Sprint",
+        duration: "03:10",
+        verifiedBy: "Referee Benson Makau",
+        thumbnailBg: "linear-gradient(135deg, #065f46, #047857)"
+      }
     },
     {
-      id: "STU-6520",
-      name: "Faith Chepkemoi",
-      age: 14,
-      gender: "Female",
-      grade: "Form 1 (Grade 9)",
-      category: "Athletics",
-      discipline: "Middle-Distance Running (800m / 1500m)",
-      verifiedRating: 92,
-      academicConduct: 95,
-      avatar: "assets/athlete_marathon.jpg",
-      status: "Active Pool",
-      guardianMediation: "School Principal & Coach Evans Ochieng",
-      maskedAddress: "Nakuru County [Masked - Minor Protection]",
-      keyStats: {
-        pb800m: "2m 06s",
-        pb1500m: "4m 21s",
-        cadence: "192 spm",
-        attendanceRate: "100%"
+      id: "TL-STU-103",
+      name: "Kaelen Zhao",
+      age: 16,
+      grade: "Grade 11",
+      school: "Metropolitan Academy",
+      primaryCategory: "indoor_sports",
+      activityId: "table_tennis",
+      activityName: "Table Tennis",
+      secondaryActivity: "Chess",
+      position: "Singles Seed #1",
+      overallRating: 92,
+      verifiedMatches: 22,
+      verifiedBadges: ["Regional Seed #1", "Precision Spin Master"],
+      metrics: {
+        agility: 96,
+        technique: 94,
+        stamina: 87,
+        leadership: 85,
+        discipline: 97
       },
-      radar: {
-        endurance: 94,
-        speedPace: 93,
-        tacticalDiscipline: 90,
-        resilience: 91,
-        academicBalance: 95
+      statsSummary: "Win Rate: 88% (22-3) • FIDE Chess Rating: 1840",
+      bio: "Unorthodox penhold grip with blistering forehand counter-drives. Exceptional analytical depth and composure under pressure.",
+      videoReel: {
+        title: "Topspin Rally Highlights & Deceptive Serve Compilation",
+        duration: "02:15",
+        verifiedBy: "Referee Benson Makau",
+        thumbnailBg: "linear-gradient(135deg, #1e293b, #3b82f6)"
+      }
+    },
+    {
+      id: "TL-STU-104",
+      name: "Zahara Nyambura",
+      age: 15,
+      grade: "Grade 10",
+      school: "Alliance Girls High",
+      primaryCategory: "music_drama",
+      activityId: "choral_vocal",
+      activityName: "Choral & Solo Singing",
+      secondaryActivity: "Instrumental (Violin)",
+      position: "Soprano Soloist / Concertmistress",
+      overallRating: 96,
+      verifiedMatches: 12,
+      verifiedBadges: ["Festival Soprano Gold", "Perfect Pitch Commendation"],
+      metrics: {
+        agility: 90,
+        technique: 98,
+        stamina: 92,
+        leadership: 95,
+        discipline: 99
       },
-      badges: [
-        {
-          id: "BDG-ATH-03",
-          title: "Junior Cross-Country Champion",
-          category: "Athletics",
-          date: "2026-07-20",
-          issuer: "Coach Evans Ochieng (STJ-PAT-01)",
-          hash: "8f434346648f6b96df89dda901c5176b10a6d83961dd3c1ac88b59b2dc327aa4",
-          verified: true
-        }
-      ],
-      timeline: [
-        {
-          date: "2026-07-20",
-          event: "Sub-County 800m Junior Championship",
-          result: "1st Place Gold",
-          verifiedBy: "Coach Evans Ochieng",
-          notes: "Clocked 2:06.12 at age 14. High potential for elite scholarship program."
-        }
-      ],
-      media: [
-        {
-          title: "800m Heat 2 Video Breakdown",
-          type: "video",
-          thumbnail: "assets/athlete_marathon.jpg",
-          duration: "2m 08s",
-          size: "5.1 MB (Compressed locally)"
-        }
-      ]
+      statsSummary: "Vocal Range: G3 to E6 • Grade 7 ABRSM Violin with Distinction",
+      bio: "Remarkable vocal resonance, diction, and expressive range. Led the school chamber choir to regional festival championship.",
+      videoReel: {
+        title: "National Festival Solo Recital & Classical Violin Concerto",
+        duration: "04:20",
+        verifiedBy: "Dr. Evelyn Wanjiku & Justice Michael Kioko",
+        thumbnailBg: "linear-gradient(135deg, #831843, #be185d)"
+      }
+    },
+    {
+      id: "TL-STU-105",
+      name: "Devon Omondi",
+      age: 17,
+      grade: "Grade 12",
+      school: "Highway Secondary",
+      primaryCategory: "outdoor_sports",
+      activityId: "football",
+      activityName: "Football",
+      secondaryActivity: "Athletics (Sprints)",
+      position: "Central Midfielder (#8)",
+      overallRating: 95,
+      verifiedMatches: 26,
+      verifiedBadges: ["Captains Armband Honor", "Tournament Top Playmaker"],
+      metrics: {
+        agility: 91,
+        technique: 96,
+        stamina: 95,
+        leadership: 97,
+        discipline: 94
+      },
+      statsSummary: "11 Goals, 19 Assists, 89% Pass Accuracy over 26 Matches",
+      bio: "Box-to-box midfielder with sublime passing range, defensive tenacity, and inspiring leadership on the pitch.",
+      videoReel: {
+        title: "Match Decider Goal & Midfield Distribution Masterclass",
+        duration: "03:40",
+        verifiedBy: "Referee Benson Makau",
+        thumbnailBg: "linear-gradient(135deg, #15803d, #047857)"
+      }
+    },
+    {
+      id: "TL-STU-106",
+      name: "Sipho Khumalo",
+      age: 16,
+      grade: "Grade 11",
+      school: "Greenwood College",
+      primaryCategory: "outdoor_sports",
+      activityId: "rugby",
+      activityName: "Rugby",
+      secondaryActivity: "Handball",
+      position: "Fly-half / First Receiver",
+      overallRating: 93,
+      verifiedMatches: 15,
+      verifiedBadges: ["Kicking Accuracy 87%", "Sportsmanship Award"],
+      metrics: {
+        agility: 92,
+        technique: 94,
+        stamina: 93,
+        leadership: 93,
+        discipline: 96
+      },
+      statsSummary: "84 Points Scored • 98% Tackle Completion Rate",
+      bio: "Tactical kicking specialist with supreme game management and defensive courage.",
+      videoReel: {
+        title: "Tactical Clearance Kicks & Try-Saving Defensive Stops",
+        duration: "02:50",
+        verifiedBy: "Referee Benson Makau",
+        thumbnailBg: "linear-gradient(135deg, #78350f, #b45309)"
+      }
+    },
+    {
+      id: "TL-STU-107",
+      name: "Brian Kipchumba",
+      age: 15,
+      grade: "Grade 10",
+      school: "Highland Academy",
+      primaryCategory: "outdoor_sports",
+      activityId: "hockey",
+      activityName: "Hockey",
+      secondaryActivity: "Table Tennis",
+      position: "Forward / Striker",
+      overallRating: 90,
+      verifiedMatches: 16,
+      verifiedBadges: ["Fastest Penalty Strike", "Regional Finalist"],
+      metrics: {
+        agility: 94,
+        technique: 92,
+        stamina: 89,
+        leadership: 84,
+        discipline: 93
+      },
+      statsSummary: "14 Field Goals, 8 Penalty Corner Conversions",
+      bio: "Lightning acceleration and clinical finishing in the circle. Strong team player with disciplined positioning.",
+      videoReel: {
+        title: "Reverse Stick Goals & Counter-Attacking Speed",
+        duration: "02:30",
+        verifiedBy: "Referee Benson Makau",
+        thumbnailBg: "linear-gradient(135deg, #0369a1, #0284c7)"
+      }
+    },
+    {
+      id: "TL-STU-108",
+      name: "Farida Hassan",
+      age: 16,
+      grade: "Grade 11",
+      school: "Coastal Academy",
+      primaryCategory: "music_drama",
+      activityId: "spoken_word",
+      activityName: "Spoken Word & Poetry",
+      secondaryActivity: "Stage Drama",
+      position: "Solo Poet / Dramatist",
+      overallRating: 95,
+      verifiedMatches: 11,
+      verifiedBadges: ["Grand Slam Poetry Laureate", "Originality Honors"],
+      metrics: {
+        agility: 88,
+        technique: 97,
+        stamina: 91,
+        leadership: 94,
+        discipline: 98
+      },
+      statsSummary: "1st Place National Verse Competition • 3 Published School Anthologies",
+      bio: "Electric stage presence, thought-provoking metaphorical depth, and impeccable rhythmic delivery.",
+      videoReel: {
+        title: "Winning Performance: 'Voices Across The Ocean'",
+        duration: "03:55",
+        verifiedBy: "Dr. Evelyn Wanjiku & Justice Michael Kioko",
+        thumbnailBg: "linear-gradient(135deg, #4c1d95, #6d28d9)"
+      }
+    },
+    {
+      id: "TL-STU-109",
+      name: "Natasha Mutua",
+      age: 15,
+      grade: "Grade 10",
+      school: "Riverdale High",
+      primaryCategory: "indoor_sports",
+      activityId: "badminton",
+      activityName: "Badminton",
+      secondaryActivity: "Lawn Tennis",
+      position: "Singles & Mixed Doubles Captain",
+      overallRating: 91,
+      verifiedMatches: 19,
+      verifiedBadges: ["Smash Velocity Record", "All-Court Champion"],
+      metrics: {
+        agility: 98,
+        technique: 93,
+        stamina: 89,
+        leadership: 89,
+        discipline: 95
+      },
+      statsSummary: "Smash Speed: 260 km/h • Interschool Gold Medalist",
+      bio: "Explosive footwork, swift wrist snap, and great defensive court recovery.",
+      videoReel: {
+        title: "Badminton Tournament Final Deciding Set Highlights",
+        duration: "02:40",
+        verifiedBy: "Referee Benson Makau",
+        thumbnailBg: "linear-gradient(135deg, #0e7490, #06b6d4)"
+      }
+    },
+    {
+      id: "TL-STU-110",
+      name: "George Kariuki",
+      age: 17,
+      grade: "Grade 12",
+      school: "Valley Technical",
+      primaryCategory: "outdoor_sports",
+      activityId: "volleyball",
+      activityName: "Volleyball",
+      secondaryActivity: "Handball",
+      position: "Outside Hitter / Spiker",
+      overallRating: 93,
+      verifiedMatches: 21,
+      verifiedBadges: ["Best Spiker 2025", "County Tournament MVP"],
+      metrics: {
+        agility: 92,
+        technique: 95,
+        stamina: 94,
+        leadership: 92,
+        discipline: 97
+      },
+      statsSummary: "Vertical Leap: 88cm • 186 Spike Kills in 21 Games",
+      bio: "Tremendous elevation and power behind the spike line. Reliable serve receiver under high pressure.",
+      videoReel: {
+        title: "Dominant Spike Kills & Triple-Block Highlights",
+        duration: "03:00",
+        verifiedBy: "Referee Benson Makau",
+        thumbnailBg: "linear-gradient(135deg, #c2410c, #ea580c)"
+      }
+    },
+    {
+      id: "TL-STU-111",
+      name: "Maya Patel",
+      age: 16,
+      grade: "Grade 11",
+      school: "Horizon International",
+      primaryCategory: "indoor_sports",
+      activityId: "chess",
+      activityName: "Chess",
+      secondaryActivity: "Table Tennis",
+      position: "Board 1 Captain",
+      overallRating: 96,
+      verifiedMatches: 25,
+      verifiedBadges: ["FIDE Master Candidate", "National Schools Champion"],
+      metrics: {
+        agility: 86,
+        technique: 99,
+        stamina: 95,
+        leadership: 92,
+        discipline: 100
+      },
+      statsSummary: "FIDE 2045 Rating • 25 Consecutive Undefeated Interschool Games",
+      bio: "Deep positional intuition, aggressive king-side attacking repertoire, and rigorous preparation.",
+      videoReel: {
+        title: "Annotated Queen's Gambit Masterclass vs. Regional Seed #2",
+        duration: "04:10",
+        verifiedBy: "Referee Benson Makau",
+        thumbnailBg: "linear-gradient(135deg, #312e81, #4338ca)"
+      }
+    },
+    {
+      id: "TL-STU-112",
+      name: "Lucas Otieno",
+      age: 15,
+      grade: "Grade 10",
+      school: "Lakeview Academy",
+      primaryCategory: "music_drama",
+      activityId: "cultural_dance",
+      activityName: "Cultural Dance & Movement",
+      secondaryActivity: "Choral & Solo Singing",
+      position: "Lead Dancer & Percussionist",
+      overallRating: 94,
+      verifiedMatches: 13,
+      verifiedBadges: ["Folk Dance Choreography Gold", "Heritage Art Ambassador"],
+      metrics: {
+        agility: 97,
+        technique: 95,
+        stamina: 96,
+        leadership: 90,
+        discipline: 98
+      },
+      statsSummary: "Gold Award National Folk Festival • Master of 4 Traditional Instruments",
+      bio: "Extraordinary rhythmic precision, acrobatic dynamism, and authentic preservation of cultural expression.",
+      videoReel: {
+        title: "National Cultural Dance Gala Winning Showcase",
+        duration: "03:30",
+        verifiedBy: "Dr. Evelyn Wanjiku & Justice Michael Kioko",
+        thumbnailBg: "linear-gradient(135deg, #991b1b, #dc2626)"
+      }
     }
   ],
 
-  // Pre-configured fixtures for Coaches to log offline
-  fixtures: [
+  // Recent official logs submitted by Referee, Adjudicator, Judge
+  officialLogs: [
     {
-      id: "FIX-2026-09",
-      competition: "County Interschool Football Championship",
-      opponent: "Rift Valley Science Academy",
-      date: "2026-09-17",
-      location: "Keringet Remote Pitch (0 Cellular Coverage)",
-      type: "Football"
+      id: "LOG-REF-2026-01",
+      feederType: "Referee",
+      feederName: "Coach Benson Makau",
+      disciplineCategory: "Sports (Outdoor Category)",
+      activity: "Football",
+      matchOrEvent: "Inter-School Finals: St. Jude vs Highway Secondary",
+      date: "2026-03-12",
+      scoreline: "St. Jude 3 - 2 Highway Secondary",
+      keyMetrics: "Goals: Tariq Omari (2), Devon Omondi (1) • Cards: 1 Yellow",
+      mvpCandidate: "Devon Omondi (#8 Central Midfield)",
+      videoStatus: "Video Linked (Verified Match Tape)",
+      videoUrl: "https://talentlink.edu/match/ft-stj-hwy-2026",
+      officialVerdict: "Certified Match Result • Final Whistle Validated",
+      status: "Verified & Locked"
     },
     {
-      id: "FIX-2026-10",
-      competition: "Regional Athletics Trials",
-      opponent: "Regional Invitational",
-      date: "2026-09-19",
-      location: "Afraha Stadium Ground",
-      type: "Athletics"
+      id: "LOG-ADJ-2026-02",
+      feederType: "Adjudicator",
+      feederName: "Dr. Evelyn Wanjiku",
+      disciplineCategory: "Music and Drama",
+      activity: "Stage Drama & Plays",
+      matchOrEvent: "Regional Drama Gala: 'Shadows of the Savannah'",
+      date: "2026-03-14",
+      scoreline: "Score: 94/100 (Distinction)",
+      keyMetrics: "Vocal Tone: 19/20 | Articulation: 19/20 | Stage Presence: 20/20 | Timing: 18/20 | Delivery: 18/20",
+      mvpCandidate: "Tariq Omari (Lead Actor)",
+      videoStatus: "4K HD Video Clip Attached",
+      videoUrl: "https://talentlink.edu/drama/shadows-savannah-act2",
+      officialVerdict: "Exceptional dramatic cadence, commanding stage presence, highly recommended for national honors.",
+      status: "Verified & Locked"
+    },
+    {
+      id: "LOG-JDG-2026-03",
+      feederType: "Judge",
+      feederName: "Justice Michael Kioko",
+      disciplineCategory: "Music and Drama",
+      activity: "Choral & Solo Singing",
+      matchOrEvent: "All-County Music Championship: Operatic Solo",
+      date: "2026-03-15",
+      scoreline: "Rank: 1st Place (Gold Medal)",
+      keyMetrics: "Pitch Accuracy: 10/10 | Dynamic Control: 10/10 | Emotional Resonance: 9.8/10",
+      mvpCandidate: "Zahara Nyambura (Soprano Soloist)",
+      videoStatus: "Concert Recording Verified",
+      videoUrl: "https://talentlink.edu/music/recital-zahara-soprano",
+      officialVerdict: "Flawless timbre and extraordinary dynamic mastery. Official Gold Certificate issued.",
+      status: "Verified & Locked"
+    },
+    {
+      id: "LOG-REF-2026-04",
+      feederType: "Referee",
+      feederName: "Coach Benson Makau",
+      disciplineCategory: "Sports (Indoor Category)",
+      activity: "Basketball",
+      matchOrEvent: "Metropolitan League Round 4: St. Jude vs Coastal Raptors",
+      date: "2026-03-16",
+      scoreline: "St. Jude 78 - 71 Coastal Raptors",
+      keyMetrics: "Fast Breaks: 14 | Steals: 9 | Fouls: 12 Team Fouls",
+      mvpCandidate: "Tariq Omari (24 Pts, 11 Ast, 4 Stl)",
+      videoStatus: "Broadcast Stream Uploaded",
+      videoUrl: "https://talentlink.edu/hoops/stj-vs-cr-r4",
+      officialVerdict: "Full regulation game concluded without technical violations.",
+      status: "Verified & Locked"
     }
   ],
 
-  // Initial Transaction Log (SQLite simulation with Pending_Sync state)
-  transactions: [
-    {
-      txId: "TX-1048",
-      timestamp: "2026-09-16 16:30:22",
-      studentId: "STU-9104",
-      studentName: "Brian Omondi",
-      event: "Football: 2 Goals, 1 Assist vs Rift Valley Academy",
-      patron: "Coach Evans Ochieng",
-      status: "Synced",
-      ledgerHash: "4a5b6c7d8e9f0123...verified",
-      offlineRecorded: false
-    },
-    {
-      txId: "TX-1049",
-      timestamp: "2026-09-17 14:15:10",
-      studentId: "STU-8821",
-      studentName: "Dennis Kipruto",
-      event: "Athletics: 5000m Time Trial (14m 41s)",
-      patron: "Coach Evans Ochieng",
-      status: "Pending_Sync",
-      ledgerHash: "Queued in Local SQLite",
-      offlineRecorded: true
-    }
+  // Adjudication Rubric Criteria for Music & Drama
+  rubricCriteria: [
+    { id: "vocal_tone", label: "Vocal Tone & Intonation", max: 20, desc: "Purity of sound, pitch center, acoustic resonance" },
+    { id: "diction", label: "Diction & Articulation", max: 20, desc: "Clarity of text, expressive projection, linguistic nuances" },
+    { id: "rhythm", label: "Rhythm, Tempo & Timing", max: 20, desc: "Beat consistency, syncopation accuracy, dynamic pacing" },
+    { id: "stage_presence", label: "Stage Presence & Characterization", max: 20, desc: "Physical spatial command, emotional connection, posture" },
+    { id: "technique", label: "Artistic Technique & Musicality", max: 20, desc: "Execution mastery, dynamic contrast, creative interpretation" }
   ],
 
-  // Outreach inquiries mediated through Principal & Patron
-  inquiries: [
+  // System Stats
+  stats: {
+    totalStudents: 342,
+    verifiedAthletes: 198,
+    verifiedPerformers: 144,
+    officialReferees: 16,
+    officialAdjudicators: 12,
+    officialJudges: 8,
+    scoutInquiriesPending: 3,
+    badgesIssued: 840,
+    videoClipsArchived: 520
+  },
+
+  // Pending scout inquiries (for Institutional Admin review)
+  pendingInquiries: [
     {
-      id: "INQ-2026-01",
-      studentId: "STU-8821",
-      studentName: "Dennis Kipruto",
-      scoutName: "Elite High-Altitude Running Academy",
-      scoutRep: "Marcus Vance (Recruitment Director)",
-      scoutType: "Sports Scholarship Body",
-      message: "We have reviewed Dennis's verified 5000m timeline and sub-15m times. We offer a full high-school sports scholarship covering tuition, specialized coaching, and Olympic-grade nutrition.",
-      terms: "Full Scholarship + Sports Kit + High Performance Training",
-      date: "2026-09-16",
+      id: "INQ-2026-801",
+      scoutName: "Marcus Vance",
+      organization: "Apex Collegiate Talent & Academy",
+      studentId: "TL-STU-101",
+      studentName: "Tariq Omari",
+      category: "Basketball (Indoor) & Stage Drama",
+      purpose: "Athletic-Artistic Dual Scholarship Evaluation for 2027 Entry",
+      dateSubmitted: "2026-03-17",
       status: "Pending Principal Review",
-      principalApproved: false,
-      patronReviewed: true
+      confidentialityMode: "COPPA / Minor Privacy Guard (PII Masked)"
     },
     {
-      id: "INQ-2026-02",
-      studentId: "STU-7432",
-      studentName: "Amina Wanjiku",
-      scoutName: "National Youth Performing Arts Trust",
-      scoutRep: "Dr. Clara Ndung'u",
-      scoutType: "Cultural Partnership",
-      message: "Requesting permission to invite Amina to audition for the African Youth Theatre Fellowship in Nairobi.",
-      terms: "Fully Funded Fellowship & Mentorship",
-      date: "2026-09-15",
-      status: "Approved by Principal",
-      principalApproved: true,
-      patronReviewed: true
+      id: "INQ-2026-802",
+      scoutName: "Helena Lindqvist",
+      organization: "Nordic Athletic High Performance Center",
+      studentId: "TL-STU-102",
+      studentName: "Amina Cherotich",
+      category: "Athletics (Middle Distance 800m)",
+      purpose: "Invitation to Youth Track & Field International Invitational",
+      dateSubmitted: "2026-03-18",
+      status: "Pending Principal Review",
+      confidentialityMode: "COPPA / Minor Privacy Guard (PII Masked)"
     }
   ]
 };
 
-// Expose on window for easy access
-window.TALENT_DATA = TALENT_DATA;
+// Expose to window for browser access
+if (typeof window !== "undefined") {
+  window.TL_DATA = TL_DATA;
+}
