@@ -3,10 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TALENTLINK & SCOUTING PLATFORM | Co-Curricular Tracking & Talent Discovery</title>
-  <meta name="description" content="Official Co-Curricular Tracking & Talent Scouting Platform. Empowering sports referees, drama adjudicators, judges, and scouts with authentic scoring and discovery tools." />
-  
-  <!-- Modern Clean Design Stylesheet -->
+  <title>TALENTLINK | Talent Scouting & Scholarship Platform</title>
+  <meta name="description" content="Official Co-Curricular Tracking & Talent Scouting Platform. Professional scoring and discovery tools for referees, adjudicators, scouts, and sponsors." />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -23,31 +21,34 @@
         <div class="brand-text">
           <h1>
             TALENTLINK
-            <span class="brand-tag">SCOUTING PLATFORM</span>
+            <span class="brand-tag">SCOUTING</span>
           </h1>
-          <div class="brand-subtitle">Co-Curricular Performance Tracking & Official Scoring Ecosystem</div>
+          <div class="brand-subtitle">Performance Tracking & Official Scoring</div>
         </div>
       </div>
 
       <!-- Navigation Views -->
       <nav class="nav-links" aria-label="Portal Navigation">
         <button type="button" class="nav-item" data-view="workspace_scout">
-          <span>🔍</span> <span>Scout Talent Hub</span>
+          Scout Hub
         </button>
         <button type="button" class="nav-item active" data-view="workspace_referee">
-          <span>⚽</span> <span>Referee Center</span>
+          Referee Center
         </button>
         <button type="button" class="nav-item" data-view="workspace_adjudicator">
-          <span>🎭</span> <span>Adjudicator Desk</span>
+          Adjudicator Desk
         </button>
         <button type="button" class="nav-item" data-view="workspace_judge">
-          <span>⚖️</span> <span>Judge Awards</span>
+          Judge Awards
+        </button>
+        <button type="button" class="nav-item" data-view="workspace_sponsor">
+          Sponsors & Scholarships
         </button>
         <button type="button" class="nav-item" data-view="workspace_student">
-          <span>🎓</span> <span>Student CV</span>
+          Student CV
         </button>
         <button type="button" class="nav-item" data-view="workspace_admin">
-          <span>🏛️</span> <span>Admin Oversight</span>
+          Admin Oversight
         </button>
       </nav>
 
@@ -56,12 +57,12 @@
         <div class="role-badge-pill">
           <span class="role-dot"></span>
           <div>
-            <strong id="current-user-name" style="color: var(--text-dark); font-size: 0.85rem;">Coach Benson Makau</strong>
-            <span id="current-user-badge" style="display: block; font-size: 0.72rem; color: var(--text-secondary);">Official Referee (Sports)</span>
+            <strong id="current-user-name" style="font-size: 0.85rem;">Coach Benson Makau</strong>
+            <span id="current-user-badge" style="display: block; font-size: 0.72rem; color: var(--text-muted);">Official Referee (Sports)</span>
           </div>
         </div>
         <button type="button" class="btn-switch-role" id="btn-switch-role">
-          <span>🔄</span> <span>Switch Role</span>
+          Switch Role
         </button>
       </div>
 
@@ -69,17 +70,17 @@
   </header>
 
   <!-- =========================================================================
-       HERO BANNER (NETSCOUT WHITE & CLEAN VIBE)
+       HERO BANNER
        ========================================================================= -->
   <section class="hero-banner">
     <div class="hero-content">
       <div class="hero-main">
-        <span class="hero-eyebrow">CO-CURRICULAR INTELLIGENCE & TALENT SCOUTING PLATFORM</span>
+        <span class="hero-eyebrow">Data-Driven Talent Platform</span>
         <h2>
-          Precision Tracking for <span class="hero-highlight">Athletic Excellence & Creative Arts</span>
+          Verified Assessment for <span>Athletics & Creative Arts</span>
         </h2>
         <p class="hero-subtitle">
-          An authentic, centralized platform connecting certified sports referees, music & drama adjudicators, judges, and scouts to discover and verify secondary school potential.
+          An authentic, centralized platform connecting certified sports referees, music & drama adjudicators, judges, scouts, and sponsors to discover secondary school potential.
         </p>
       </div>
 
@@ -94,76 +95,51 @@
         </div>
         <div class="hero-stat-card">
           <div class="hero-stat-number">5</div>
-          <div class="hero-stat-label">Music & Drama Arts</div>
+          <div class="hero-stat-label">Creative Arts</div>
         </div>
         <div class="hero-stat-card">
-          <div class="hero-stat-number">100%</div>
-          <div class="hero-stat-label">Audited Logs</div>
+          <div class="hero-stat-number">24</div>
+          <div class="hero-stat-label">Active Scholarships</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- =========================================================================
-       NETSCOUT FLOATING SUB-NAV BAR (CLEAN PILL CONTAINER)
+       FLOATING SUB-NAV BAR (MOBILE/TABLET)
        ========================================================================= -->
   <div class="floating-subnav-wrapper">
     <div class="floating-subnav-container">
       <nav class="floating-subnav" aria-label="Portal Navigation Workspaces">
-        <button type="button" class="subnav-link" data-view="workspace_scout">
-          <span>🔍</span> <span>Scout Talent Hub</span>
-        </button>
-        <button type="button" class="subnav-link active" data-view="workspace_referee">
-          <span>⚽</span> <span>Referee Center</span>
-        </button>
-        <button type="button" class="subnav-link" data-view="workspace_adjudicator">
-          <span>🎭</span> <span>Adjudicator Desk</span>
-        </button>
-        <button type="button" class="subnav-link" data-view="workspace_judge">
-          <span>⚖️</span> <span>Judge Awards</span>
-        </button>
-        <button type="button" class="subnav-link" data-view="workspace_student">
-          <span>🎓</span> <span>Student CV</span>
-        </button>
-        <button type="button" class="subnav-link" data-view="workspace_admin">
-          <span>🏛️</span> <span>Admin Oversight</span>
-        </button>
+        <button type="button" class="subnav-link" data-view="workspace_scout">Scout Hub</button>
+        <button type="button" class="subnav-link active" data-view="workspace_referee">Referee</button>
+        <button type="button" class="subnav-link" data-view="workspace_adjudicator">Adjudicator</button>
+        <button type="button" class="subnav-link" data-view="workspace_judge">Judge</button>
+        <button type="button" class="subnav-link" data-view="workspace_sponsor">Sponsors</button>
+        <button type="button" class="subnav-link" data-view="workspace_student">Student CV</button>
+        <button type="button" class="subnav-link" data-view="workspace_admin">Admin</button>
       </nav>
     </div>
   </div>
 
   <!-- =========================================================================
-       CATEGORIES QUICK-NAV BAR (MANDATORY REQUIREMENT SPECIFICATION)
+       CATEGORIES QUICK-NAV BAR
        ========================================================================= -->
   <div class="category-nav-bar">
     <div class="category-nav-inner">
       <div class="category-chips">
-        <button type="button" class="cat-chip active" data-category="all">
-          <span>🌐</span> <span>All Disciplines</span>
-        </button>
-        <button type="button" class="cat-chip" data-category="indoor_sports">
-          <span>🏸</span> <span>Sports (Indoor Category)</span>
-        </button>
-        <button type="button" class="cat-chip" data-category="outdoor_sports">
-          <span>⚽</span> <span>Sports (Outdoor Category)</span>
-        </button>
-        <button type="button" class="cat-chip" data-category="music_drama">
-          <span>🎭</span> <span>Music and Drama</span>
-        </button>
+        <button type="button" class="cat-chip active" data-category="all">All Disciplines</button>
+        <button type="button" class="cat-chip" data-category="indoor_sports">Indoor Sports</button>
+        <button type="button" class="cat-chip" data-category="outdoor_sports">Outdoor Sports</button>
+        <button type="button" class="cat-chip" data-category="music_drama">Music & Drama</button>
       </div>
 
       <!-- Quick Feeder Buttons -->
       <div class="feeder-quick-actions">
-        <span style="font-size: 0.76rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Official Feeders:</span>
-        <button type="button" class="btn-feeder btn-feeder-referee" id="btn-quick-referee">
-          <span>⚽</span> <span>Referee</span>
-        </button>
-        <button type="button" class="btn-feeder btn-feeder-adjudicator" id="btn-quick-adjudicator">
-          <span>🎭</span> <span>Adjudicator</span>
-        </button>
-        <button type="button" class="btn-feeder btn-feeder-judge" id="btn-quick-judge">
-          <span>⚖️</span> <span>Judge</span>
-        </button>
+        <span style="font-size: 0.76rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; margin-right: 0.5rem;">Access:</span>
+        <button type="button" class="btn-feeder btn-feeder-referee" id="btn-quick-referee">Referee</button>
+        <button type="button" class="btn-feeder btn-feeder-adjudicator" id="btn-quick-adjudicator">Adjudicator</button>
+        <button type="button" class="btn-feeder btn-feeder-judge" id="btn-quick-judge">Judge</button>
       </div>
     </div>
   </div>
@@ -174,51 +150,43 @@
   <main class="main-content">
 
     <!-- =======================================================================
-         VIEW 1: REFEREE WORKSPACE (SPORTS FEEDER)
-         Indoor Sports: Table Tennis, Badminton, Lawn Tennis, Chess, Basketball
-         Outdoor Sports: Football, Rugby, Volleyball, Hockey, Athletics, Handball
+         VIEW 1: REFEREE WORKSPACE
          ======================================================================= -->
     <section id="workspace_referee" class="workspace-view active-view">
       <div class="section-header">
         <div class="section-title-wrap">
-          <h3><span>⚽</span> Official Referee Match Center</h3>
-          <p>Record verified scores, disciplinary records, MVP nominations, and match video clips for Indoor & Outdoor sports.</p>
-        </div>
-        <div style="display: flex; gap: 0.5rem;">
-          <span class="feeder-badge badge-referee">Certified Sports Official</span>
+          <h3>Official Match Center</h3>
+          <p>Record verified scores, disciplinary records, MVP nominations, and match video clips.</p>
         </div>
       </div>
 
       <div class="grid-layout-sidebar">
-        
         <!-- Match Entry Form -->
         <div class="tl-card">
           <div class="card-head">
-            <h4><span>📋</span> Log Match or Competition</h4>
-            <span style="font-size: 0.76rem; color: var(--emerald-400);">Live Offline Sync Ready</span>
+            <h4>Log Match Output</h4>
           </div>
 
           <form id="referee-match-form">
-            <!-- Category & Discipline Selector -->
             <div class="form-group">
               <label for="ref-match-category">Competition Category</label>
               <select id="ref-match-category" class="form-control" required>
-                <option value="Sports (Indoor Category)">Sports (Indoor Category)</option>
-                <option value="Sports (Outdoor Category)">Sports (Outdoor Category)</option>
+                <option value="Sports (Indoor Category)">Indoor Sports</option>
+                <option value="Sports (Outdoor Category)">Outdoor Sports</option>
               </select>
             </div>
 
             <div class="form-group">
               <label for="ref-sport-select">Specific Sport Discipline</label>
               <select id="ref-sport-select" class="form-control" required>
-                <optgroup label="1. Sports (Indoor Category)">
+                <optgroup label="Indoor Sports">
                   <option value="Table Tennis">Table Tennis</option>
                   <option value="Badminton">Badminton</option>
                   <option value="Lawn Tennis">Lawn Tennis</option>
                   <option value="Chess">Chess</option>
                   <option value="Basketball" selected>Basketball</option>
                 </optgroup>
-                <optgroup label="2. Sports (Outdoor Category)">
+                <optgroup label="Outdoor Sports">
                   <option value="Football">Football</option>
                   <option value="Rugby">Rugby</option>
                   <option value="Volleyball">Volleyball</option>
@@ -229,7 +197,6 @@
               </select>
             </div>
 
-            <!-- Teams / Competitors -->
             <div class="referee-form-grid">
               <div class="form-group">
                 <label for="ref-team-home">Home Team / Contestant</label>
@@ -241,10 +208,9 @@
               </div>
             </div>
 
-            <!-- Score Counters with +/- Steppers -->
-            <div class="referee-form-grid" style="margin-bottom: 1rem;">
+            <div class="referee-form-grid">
               <div class="form-group">
-                <label>Home Score / Points</label>
+                <label>Home Score</label>
                 <div class="score-stepper-box">
                   <button type="button" class="btn-step" data-target="ref-score-home" data-delta="-1">-</button>
                   <span class="score-display-digit" id="ref-score-home">82</span>
@@ -252,7 +218,7 @@
                 </div>
               </div>
               <div class="form-group">
-                <label>Away Score / Points</label>
+                <label>Away Score</label>
                 <div class="score-stepper-box">
                   <button type="button" class="btn-step" data-target="ref-score-away" data-delta="-1">-</button>
                   <span class="score-display-digit" id="ref-score-away">76</span>
@@ -261,120 +227,80 @@
               </div>
             </div>
 
-            <!-- MVP & Disciplinary -->
             <div class="form-group">
               <label for="ref-mvp-student">MVP / Outstanding Athlete</label>
               <input type="text" id="ref-mvp-student" class="form-control" value="Tariq Omari (#7 Point Guard)" />
             </div>
 
             <div class="form-group">
-              <label for="ref-discipline-notes">Fouls, Cards & Disciplinary Record</label>
-              <input type="text" id="ref-discipline-notes" class="form-control" placeholder="e.g., 0 Yellows, 4 Personal Fouls" value="Clean sportsmanship • No disciplinary sanctions" />
+              <label for="ref-discipline-notes">Disciplinary Record</label>
+              <input type="text" id="ref-discipline-notes" class="form-control" placeholder="e.g., 0 Yellows, 4 Personal Fouls" value="Clean sportsmanship. No disciplinary sanctions." />
             </div>
 
-            <!-- Video Recording Upload / Link -->
             <div class="form-group">
-              <label for="ref-video-url">Match Video Clip / Tape Link</label>
+              <label for="ref-video-url">Match Video Clip URL</label>
               <input type="url" id="ref-video-url" class="form-control" value="https://talentlink.edu/video/match-bb-stj-metro-final" />
-              <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 0.25rem;">
-                📹 Video feeds are automatically compressed, hashed, and attached to verified student portfolios.
-              </div>
             </div>
 
-            <button type="submit" class="btn-primary" style="width: 100%; padding: 0.85rem;">
-              <span>✓ Certify & Feed Official Match Result</span>
+            <button type="submit" class="btn-primary" style="width: 100%;">
+              Certify Official Result
             </button>
           </form>
         </div>
 
-        <!-- Referee Guidelines & Activity Roster -->
-        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-          
+        <div style="display: flex; flex-direction: column; gap: 2rem;">
           <div class="tl-card">
             <div class="card-head">
-              <h4><span>📌</span> Official Sports Coverage Matrix</h4>
+              <h4>Activity Matrix</h4>
             </div>
-            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">
-              As an accredited referee, you hold official feeding jurisdiction over all sanctioned Indoor and Outdoor athletic fixtures.
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+              Sanctioned Indoor and Outdoor athletic fixtures requiring referee oversight.
             </p>
             <div class="grid-2col">
-              <div style="background: var(--bg-light); padding: 0.85rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
-                <strong style="color: var(--emerald-400); font-size: 0.88rem; display: block; margin-bottom: 0.5rem;">
-                  1. Indoor Sports:
-                </strong>
-                <ul style="list-style: none; font-size: 0.82rem; color: var(--text-primary); line-height: 1.8;">
-                  <li>🏓 Table Tennis (Singles & Doubles)</li>
-                  <li>🏸 Badminton (Court Sets)</li>
-                  <li>🎾 Lawn Tennis (Indoor Open)</li>
-                  <li>♟️ Chess (Classical & Rapid)</li>
-                  <li>🏀 Basketball (Full Regulation)</li>
+              <div>
+                <strong>Indoor Sports:</strong>
+                <ul style="list-style: none; font-size: 0.82rem; line-height: 1.8; margin-top: 0.5rem;">
+                  <li>Table Tennis</li>
+                  <li>Badminton</li>
+                  <li>Lawn Tennis</li>
+                  <li>Chess</li>
+                  <li>Basketball</li>
                 </ul>
               </div>
-
-              <div style="background: var(--bg-light); padding: 0.85rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
-                <strong style="color: #38bdf8; font-size: 0.88rem; display: block; margin-bottom: 0.5rem;">
-                  2. Outdoor Sports:
-                </strong>
-                <ul style="list-style: none; font-size: 0.82rem; color: var(--text-primary); line-height: 1.8;">
-                  <li>⚽ Football (11-a-side)</li>
-                  <li>🏉 Rugby (Sevens & XVs)</li>
-                  <li>🏐 Volleyball (Court & Sand)</li>
-                  <li>🏑 Hockey (Turf Championship)</li>
-                  <li>🏃 Athletics (Track & Field)</li>
-                  <li>🤾 Handball (Tournament Play)</li>
+              <div>
+                <strong>Outdoor Sports:</strong>
+                <ul style="list-style: none; font-size: 0.82rem; line-height: 1.8; margin-top: 0.5rem;">
+                  <li>Football</li>
+                  <li>Rugby</li>
+                  <li>Volleyball</li>
+                  <li>Hockey</li>
+                  <li>Athletics</li>
+                  <li>Handball</li>
                 </ul>
               </div>
             </div>
           </div>
-
-          <!-- Quick Live Scorer Preview -->
-          <div class="tl-card">
-            <div class="card-head">
-              <h4><span>⚡</span> Referee Quick Stats & Trust Anchor</h4>
-            </div>
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.85rem; text-align: center;">
-              <div style="background: var(--bg-light); padding: 0.75rem; border-radius: var(--radius-md);">
-                <div style="font-size: 1.3rem; font-weight: 800; color: var(--text-dark); font-family: var(--font-display);">28</div>
-                <div style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase;">Matches Refereed</div>
-              </div>
-              <div style="background: var(--bg-light); padding: 0.75rem; border-radius: var(--radius-md);">
-                <div style="font-size: 1.3rem; font-weight: 800; color: var(--emerald-400); font-family: var(--font-display);">100%</div>
-                <div style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase;">Integrity Score</div>
-              </div>
-              <div style="background: var(--bg-light); padding: 0.75rem; border-radius: var(--radius-md);">
-                <div style="font-size: 1.3rem; font-weight: 800; color: #38bdf8; font-family: var(--font-display);">19</div>
-                <div style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase;">Videos Certified</div>
-              </div>
-            </div>
-          </div>
-
         </div>
-
       </div>
     </section>
 
     <!-- =======================================================================
-         VIEW 2: ADJUDICATOR WORKSPACE (MUSIC & DRAMA FEEDER)
-         Music and Drama: Choral, Instrumental, Spoken Word, Stage Drama, Dance
+         VIEW 2: ADJUDICATOR WORKSPACE
          ======================================================================= -->
     <section id="workspace_adjudicator" class="workspace-view">
       <div class="section-header">
         <div class="section-title-wrap">
-          <h3><span>🎭</span> Music & Drama Adjudication Desk</h3>
-          <p>Official performance evaluation, standardized rubric scoring, timed artistic remarks, and recital media archiving.</p>
-        </div>
-        <div>
-          <span class="feeder-badge badge-adjudicator">Official Adjudicator</span>
+          <h3>Adjudication Desk</h3>
+          <p>Official performance evaluation and standardized rubric scoring for arts.</p>
         </div>
       </div>
 
       <div class="grid-layout-sidebar">
-        
         <!-- Adjudication Scoring Form -->
         <div class="tl-card">
           <div class="card-head">
-            <h4><span>📝</span> Score Performance & Recital</h4>
-            <div id="adj-total-score-display" style="font-family: var(--font-display); font-size: 1.3rem; font-weight: 800; color: #fb7185;">
+            <h4>Score Performance</h4>
+            <div id="adj-total-score-display" style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 700;">
               94/100
             </div>
           </div>
@@ -402,119 +328,80 @@
               </div>
             </div>
 
-            <!-- Standardized Rubric Sliders (5 Criteria x 20 Points = 100) -->
-            <div style="margin-top: 1rem;">
-              <h5 style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.75rem; letter-spacing: 0.05em;">
-                Standardized Evaluation Rubric
-              </h5>
+            <!-- Standardized Rubric Sliders -->
+            <div style="margin-top: 2rem;">
+              <h5 style="margin-bottom: 1rem;">Standardized Evaluation Rubric</h5>
 
               <div class="rubric-card-item">
                 <div class="rubric-header">
-                  <span class="rubric-title">1. Vocal Tone & Acoustic Resonance</span>
+                  <span class="rubric-title">1. Vocal Tone & Resonance</span>
                   <span class="rubric-score-badge" id="disp-score-vocal">19/20</span>
                 </div>
-                <div class="rubric-desc">Purity of tone, pitch alignment, breath control, and acoustic carrying power.</div>
                 <input type="range" class="rubric-slider" id="adj-score-vocal" data-score-target="disp-score-vocal" min="0" max="20" value="19" />
               </div>
 
               <div class="rubric-card-item">
                 <div class="rubric-header">
-                  <span class="rubric-title">2. Diction, Articulation & Text Delivery</span>
+                  <span class="rubric-title">2. Diction & Text Delivery</span>
                   <span class="rubric-score-badge" id="disp-score-diction">19/20</span>
                 </div>
-                <div class="rubric-desc">Clarity of words, dramatic pauses, inflection, and linguistic emotional depth.</div>
                 <input type="range" class="rubric-slider" id="adj-score-diction" data-score-target="disp-score-diction" min="0" max="20" value="19" />
               </div>
 
               <div class="rubric-card-item">
                 <div class="rubric-header">
-                  <span class="rubric-title">3. Rhythm, Tempo & Movement Pacing</span>
+                  <span class="rubric-title">3. Rhythm & Pacing</span>
                   <span class="rubric-score-badge" id="disp-score-rhythm">18/20</span>
                 </div>
-                <div class="rubric-desc">Synchronicity, dynamic musical pacing, and organic transition between moods.</div>
                 <input type="range" class="rubric-slider" id="adj-score-rhythm" data-score-target="disp-score-rhythm" min="0" max="20" value="18" />
               </div>
 
               <div class="rubric-card-item">
                 <div class="rubric-header">
-                  <span class="rubric-title">4. Stage Presence & Characterization</span>
+                  <span class="rubric-title">4. Stage Presence</span>
                   <span class="rubric-score-badge" id="disp-score-presence">20/20</span>
                 </div>
-                <div class="rubric-desc">Command of stage geometry, authenticity in role, and emotional audience engagement.</div>
                 <input type="range" class="rubric-slider" id="adj-score-presence" data-score-target="disp-score-presence" min="0" max="20" value="20" />
               </div>
 
               <div class="rubric-card-item">
                 <div class="rubric-header">
-                  <span class="rubric-title">5. Technical Artistic Precision</span>
+                  <span class="rubric-title">5. Technical Precision</span>
                   <span class="rubric-score-badge" id="disp-score-technique">18/20</span>
                 </div>
-                <div class="rubric-desc">Mastery of genre conventions, creative originality, and execution under performance conditions.</div>
                 <input type="range" class="rubric-slider" id="adj-score-technique" data-score-target="disp-score-technique" min="0" max="20" value="18" />
               </div>
             </div>
 
-            <!-- Remarks & Critique -->
             <div class="form-group" style="margin-top: 1rem;">
-              <label for="adj-remarks">Adjudicator Critique & Technical Verdict</label>
-              <textarea id="adj-remarks" rows="3" class="form-control">Stunning vocal projection and nuanced facial expression. Commands the entire stage with effortless dramatic weight. Exemplary candidate for university theater conservatory.</textarea>
+              <label for="adj-remarks">Critique & Technical Verdict</label>
+              <textarea id="adj-remarks" rows="3" class="form-control">Stunning vocal projection and nuanced expression. Commands the stage with dramatic weight. Exemplary candidate.</textarea>
             </div>
 
-            <button type="submit" class="btn-primary" style="width: 100%; padding: 0.85rem; background: #f43f5e; color: var(--text-dark);">
-              <span>✓ Submit Adjudication Scoresheet</span>
+            <button type="submit" class="btn-primary" style="width: 100%;">
+              Submit Scoresheet
             </button>
           </form>
         </div>
-
-        <!-- Adjudicator Bench Overview -->
-        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-          <div class="tl-card">
-            <div class="card-head">
-              <h4><span>🎭</span> Adjudication Rubric Criteria Standards</h4>
-            </div>
-            <p style="font-size: 0.84rem; color: var(--text-secondary); margin-bottom: 0.75rem;">
-              Each performance is graded out of 100 using international arts festival standards. Scores above 90 earn "Distinction with Honors".
-            </p>
-            <div style="background: var(--bg-light); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
-              <div style="display: flex; justify-content: space-between; font-size: 0.8rem; padding: 0.4rem 0; border-bottom: 1px solid var(--border-color);">
-                <span>90 - 100</span> <strong style="color: #fb7185;">Distinction with High Honors</strong>
-              </div>
-              <div style="display: flex; justify-content: space-between; font-size: 0.8rem; padding: 0.4rem 0; border-bottom: 1px solid var(--border-color);">
-                <span>80 - 89</span> <strong style="color: var(--emerald-400);">First Class Honors</strong>
-              </div>
-              <div style="display: flex; justify-content: space-between; font-size: 0.8rem; padding: 0.4rem 0; border-bottom: 1px solid var(--border-color);">
-                <span>70 - 79</span> <strong style="color: #38bdf8;">Second Class (Upper Division)</strong>
-              </div>
-              <div style="display: flex; justify-content: space-between; font-size: 0.8rem; padding: 0.4rem 0;">
-                <span>Below 70</span> <strong style="color: var(--text-muted);">Standard Participation</strong>
-              </div>
-            </div>
-          </div>
-        </div>
-
       </div>
     </section>
 
     <!-- =======================================================================
-         VIEW 3: JUDGE WORKSPACE (MUSIC & DRAMA COMPETITIVE AWARDS)
+         VIEW 3: JUDGE WORKSPACE
          ======================================================================= -->
     <section id="workspace_judge" class="workspace-view">
       <div class="section-header">
         <div class="section-title-wrap">
-          <h3><span>⚖️</span> Festival Judge Championship Bench</h3>
-          <p>Final rankings, gold/silver medal certifications, and prestigious digital badge issuance for competitive music & drama.</p>
-        </div>
-        <div>
-          <span class="feeder-badge badge-judge">Chief Competition Judge</span>
+          <h3>Judge Championship Bench</h3>
+          <p>Final rankings, certifications, and digital badge issuance.</p>
         </div>
       </div>
 
       <div class="grid-2col">
-        
-        <!-- Judge Award Issuance Form -->
+        <!-- Judge Award Form -->
         <div class="tl-card">
           <div class="card-head">
-            <h4><span>🏆</span> Issue Festival Honors & Certificate</h4>
+            <h4>Issue Honors</h4>
           </div>
 
           <form id="judge-award-form">
@@ -524,209 +411,172 @@
             </div>
 
             <div class="form-group">
-              <label for="judge-candidate-select">Select High-Ranking Finalist</label>
+              <label for="judge-candidate-select">Select Finalist</label>
               <select id="judge-candidate-select" class="form-control" required>
-                <option value="Zahara Nyambura (Choral & Solo Singing)">Zahara Nyambura — Choral & Solo Singing (Alliance Girls)</option>
-                <option value="Tariq Omari (Stage Drama & Plays)">Tariq Omari — Stage Drama & Plays (St. Jude)</option>
-                <option value="Farida Hassan (Spoken Word & Poetry)">Farida Hassan — Spoken Word & Poetry (Coastal Academy)</option>
-                <option value="Lucas Otieno (Cultural Dance & Movement)">Lucas Otieno — Cultural Dance & Movement (Lakeview Academy)</option>
+                <option value="Zahara Nyambura">Zahara Nyambura (Choral & Solo Singing)</option>
+                <option value="Tariq Omari">Tariq Omari (Stage Drama & Plays)</option>
+                <option value="Farida Hassan">Farida Hassan (Spoken Word & Poetry)</option>
               </select>
             </div>
 
             <div class="form-group">
-              <label for="judge-award-rank">Official Award Distinction</label>
+              <label for="judge-award-rank">Award Distinction</label>
               <select id="judge-award-rank" class="form-control" required>
-                <option value="🥇 1st Place (Gold Medal Champion)">🥇 1st Place (Gold Medal Champion)</option>
-                <option value="🥈 2nd Place (Silver Medalist)">🥈 2nd Place (Silver Medalist)</option>
-                <option value="🥉 3rd Place (Bronze Medalist)">🥉 3rd Place (Bronze Medalist)</option>
-                <option value="🎖️ Judge Commendation for Artistic Merit">🎖️ Judge Commendation for Artistic Merit</option>
+                <option value="1st Place (Gold)">1st Place (Gold)</option>
+                <option value="2nd Place (Silver)">2nd Place (Silver)</option>
+                <option value="3rd Place (Bronze)">3rd Place (Bronze)</option>
+                <option value="Commendation">Commendation for Merit</option>
               </select>
             </div>
 
             <div class="form-group">
-              <label for="judge-citation">Formal Judicial Citation</label>
-              <textarea id="judge-citation" rows="3" class="form-control">Awarded for flawless technical command, rare emotive depth, and exemplary interpretation representing the peak of high school performing arts.</textarea>
+              <label for="judge-citation">Citation</label>
+              <textarea id="judge-citation" rows="3" class="form-control">Awarded for technical command and interpretation representing the peak of high school performing arts.</textarea>
             </div>
 
-            <button type="submit" class="btn-primary" style="width: 100%; padding: 0.85rem; background: var(--netscout-green); color: #0f172a;">
-              <span>🏆 Sign & Issue Official Championship Award</span>
+            <button type="submit" class="btn-primary" style="width: 100%;">
+              Issue Award
             </button>
           </form>
         </div>
-
-        <!-- Leaderboard & Recent Judgments -->
-        <div class="tl-card">
-          <div class="card-head">
-            <h4><span>🏅</span> Live Competitive Podium Standings</h4>
-          </div>
-
-          <div class="judge-candidate-row">
-            <div style="display: flex; align-items: center; gap: 0.85rem;">
-              <div class="rank-badge rank-1">1</div>
-              <div>
-                <strong style="color: var(--text-dark);">Zahara Nyambura</strong>
-                <div style="font-size: 0.76rem; color: var(--text-secondary);">Choral & Solo Singing • Score: 98.4</div>
-              </div>
-            </div>
-            <span style="font-size: 0.78rem; color: #fbbf24; font-weight: 700;">Gold Medal Winner</span>
-          </div>
-
-          <div class="judge-candidate-row">
-            <div style="display: flex; align-items: center; gap: 0.85rem;">
-              <div class="rank-badge rank-2">2</div>
-              <div>
-                <strong style="color: var(--text-dark);">Tariq Omari</strong>
-                <div style="font-size: 0.76rem; color: var(--text-secondary);">Stage Drama & Plays • Score: 96.1</div>
-              </div>
-            </div>
-            <span style="font-size: 0.78rem; color: #94a3b8; font-weight: 700;">Silver Medalist</span>
-          </div>
-
-          <div class="judge-candidate-row">
-            <div style="display: flex; align-items: center; gap: 0.85rem;">
-              <div class="rank-badge rank-3">3</div>
-              <div>
-                <strong style="color: var(--text-dark);">Farida Hassan</strong>
-                <div style="font-size: 0.76rem; color: var(--text-secondary);">Spoken Word & Poetry • Score: 95.0</div>
-              </div>
-            </div>
-            <span style="font-size: 0.78rem; color: #b45309; font-weight: 700;">Bronze Medalist</span>
-          </div>
-
-          <div style="margin-top: 1.5rem; padding: 0.85rem; background: var(--bg-light); border-radius: var(--radius-md); font-size: 0.82rem; color: var(--text-secondary);">
-            <strong style="color: var(--text-dark);">Judicial Guarantee:</strong> All awarded ranks are entered directly into the institutional credentialing database and cannot be altered without dual administrator and judge cryptographic sign-off.
-          </div>
-        </div>
-
       </div>
     </section>
 
     <!-- =======================================================================
-         VIEW 4: TALENT SCOUTING DIRECTORY (SCOUT PORTAL)
+         VIEW 4: SPONSORS & SCHOLARSHIPS WORKSPACE
+         ======================================================================= -->
+    <section id="workspace_sponsor" class="workspace-view">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <h3>Sponsors & Scholarships</h3>
+          <p>Review candidate portfolios, scout high-performing individuals, and submit scholarship offers directly to administration.</p>
+        </div>
+      </div>
+
+      <div class="filter-bar">
+        <div class="search-input-wrap">
+          <input type="text" id="sponsor-search-input" class="form-control" placeholder="Search by name, school, sport, or skill..." />
+        </div>
+        <select id="sponsor-filter-category" class="filter-select">
+          <option value="all">All Disciplines</option>
+          <option value="indoor_sports">Indoor Sports</option>
+          <option value="outdoor_sports">Outdoor Sports</option>
+          <option value="music_drama">Music & Drama</option>
+        </select>
+      </div>
+
+      <div class="talent-grid" id="sponsor-cards-grid">
+        <!-- Rendered reactively via JS -->
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         VIEW 5: TALENT SCOUTING DIRECTORY (SCOUT PORTAL)
          ======================================================================= -->
     <section id="workspace_scout" class="workspace-view">
       <div class="section-header">
         <div class="section-title-wrap">
-          <h3><span>🔍</span> Talent Discovery & Scouting Portal</h3>
-          <p>Filter candidates across Indoor Sports, Outdoor Sports, and Music & Drama. Inspect verified performance video reels and initiate secure recruitment outreach.</p>
+          <h3>Scout Hub</h3>
+          <p>Filter candidates across categories, inspect verified video reels, and initiate recruitment outreach.</p>
         </div>
       </div>
 
-      <!-- Filter Controls -->
       <div class="filter-bar">
         <div class="search-input-wrap">
-          <span class="search-icon">🔍</span>
           <input type="text" id="talent-search-input" class="form-control" placeholder="Search by name, school, sport, or skill..." />
         </div>
-
         <select id="filter-category-select" class="filter-select">
           <option value="all">All Disciplines</option>
-          <option value="indoor_sports">Sports (Indoor Category)</option>
-          <option value="outdoor_sports">Sports (Outdoor Category)</option>
-          <option value="music_drama">Music and Drama</option>
+          <option value="indoor_sports">Indoor Sports</option>
+          <option value="outdoor_sports">Outdoor Sports</option>
+          <option value="music_drama">Music & Drama</option>
         </select>
-
         <select id="filter-activity-select" class="filter-select">
           <option value="all">All Activities & Disciplines</option>
         </select>
       </div>
 
-      <!-- Talent Cards Grid -->
       <div class="talent-grid" id="talent-cards-grid">
         <!-- Rendered reactively via app.js -->
       </div>
     </section>
 
     <!-- =======================================================================
-         VIEW 5: STUDENT TALENT CV & PORTFOLIO
+         VIEW 6: STUDENT TALENT CV & PORTFOLIO
          ======================================================================= -->
     <section id="workspace_student" class="workspace-view">
       <div class="section-header">
         <div class="section-title-wrap">
-          <h3><span>🎓</span> Student Verified Co-Curricular CV</h3>
-          <p>A portable, certified record of high school athletic and creative arts achievements signed by official referees and adjudicators.</p>
+          <h3>Student CV</h3>
+          <p>Portable, certified record of high school achievements signed by official referees and adjudicators.</p>
         </div>
         <button type="button" class="btn-secondary" onclick="window.print()">
-          <span>🖨️ Export / Print CV</span>
+          Print CV
         </button>
       </div>
 
-      <div class="tl-card" style="margin-bottom: 1.5rem;">
-        <div style="display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap;">
-          <div style="width: 84px; height: 84px; border-radius: var(--radius-lg); background: linear-gradient(135deg, #10b981, #0284c7); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: var(--text-dark);">
-            🏀
+      <div class="tl-card">
+        <div style="margin-bottom: 2rem;">
+          <h2 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Tariq Omari</h2>
+          <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 1rem;">
+            <span class="badge">94 Overall Score</span>
+            <span class="badge" style="background: var(--bg-dark); color: var(--text-inverse);">Verified Athlete & Artist</span>
           </div>
-          <div style="flex: 1;">
-            <div style="display: flex; align-items: center; gap: 0.85rem; flex-wrap: wrap;">
-              <h2 style="font-family: var(--font-display); font-size: 1.8rem; font-weight: 800; color: var(--text-dark);">Tariq Omari</h2>
-              <span class="rating-badge">94 Overall Verified</span>
-              <span style="background: rgba(16, 185, 129, 0.15); color: var(--emerald-400); font-size: 0.75rem; padding: 0.25rem 0.65rem; border-radius: var(--radius-full); font-weight: 700;">
-                Verified Student Athlete & Dramatist
-              </span>
-            </div>
-            <p style="color: var(--text-secondary); font-size: 0.92rem; margin-top: 0.25rem;">
-              St. Jude Senior Academy • Grade 11 • Age 16 • Primary: Basketball (Indoor) | Secondary: Stage Drama & Plays
-            </p>
-          </div>
+          <p style="font-size: 1rem;">
+            St. Jude Senior Academy | Grade 11 | Age 16<br>
+            Primary: Basketball (Indoor) | Secondary: Stage Drama
+          </p>
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
-          <div style="background: var(--bg-light); padding: 1rem; border-radius: var(--radius-md);">
-            <div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase;">Official Verified Matches</div>
-            <div style="font-size: 1.5rem; font-weight: 800; color: var(--text-dark); font-family: var(--font-display);">18 Fixtures</div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; border-top: var(--border-width) solid var(--border-color); padding-top: 2rem;">
+          <div>
+            <div style="font-size: 0.85rem; text-transform: uppercase; font-weight: 700;">Official Matches</div>
+            <div style="font-size: 2rem; font-family: var(--font-display); font-weight: 700;">18</div>
           </div>
-          <div style="background: var(--bg-light); padding: 1rem; border-radius: var(--radius-md);">
-            <div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase;">Points Per Game (PPG)</div>
-            <div style="font-size: 1.5rem; font-weight: 800; color: var(--emerald-400); font-family: var(--font-display);">18.4 PPG</div>
+          <div>
+            <div style="font-size: 0.85rem; text-transform: uppercase; font-weight: 700;">Points Per Game</div>
+            <div style="font-size: 2rem; font-family: var(--font-display); font-weight: 700;">18.4</div>
           </div>
-          <div style="background: var(--bg-light); padding: 1rem; border-radius: var(--radius-md);">
-            <div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase;">Drama Adjudication Score</div>
-            <div style="font-size: 1.5rem; font-weight: 800; color: #fb7185; font-family: var(--font-display);">94 / 100</div>
+          <div>
+            <div style="font-size: 0.85rem; text-transform: uppercase; font-weight: 700;">Adjudication Score</div>
+            <div style="font-size: 2rem; font-family: var(--font-display); font-weight: 700;">94</div>
           </div>
-          <div style="background: var(--bg-light); padding: 1rem; border-radius: var(--radius-md);">
-            <div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase;">Badges & Honors</div>
-            <div style="font-size: 1.5rem; font-weight: 800; color: #f59e0b; font-family: var(--font-display);">3 Certified</div>
+          <div>
+            <div style="font-size: 0.85rem; text-transform: uppercase; font-weight: 700;">Badges</div>
+            <div style="font-size: 2rem; font-family: var(--font-display); font-weight: 700;">3</div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- =======================================================================
-         VIEW 6: INSTITUTIONAL ADMIN OVERSIGHT
+         VIEW 7: INSTITUTIONAL ADMIN OVERSIGHT
          ======================================================================= -->
     <section id="workspace_admin" class="workspace-view">
       <div class="section-header">
         <div class="section-title-wrap">
-          <h3><span>🏛️</span> Institutional Administrator Oversight</h3>
-          <p>School-wide oversight, scout recruitment permission approvals, compliance checks, and cryptographic credentialing engine.</p>
-        </div>
-        <div>
-          <span class="feeder-badge" style="background: rgba(99, 102, 241, 0.15); color: #a5b4fc; border: 1px solid rgba(99, 102, 241, 0.35);">
-            Principal / Athletic Director
-          </span>
+          <h3>Admin Oversight</h3>
+          <p>School-wide oversight, recruitment approvals, and credentialing engine.</p>
         </div>
       </div>
 
-      <!-- Pending Scout Outreach Inquiries -->
-      <div class="tl-card" style="margin-bottom: 2rem;">
+      <div class="tl-card">
         <div class="card-head">
-          <h4><span>📬</span> Pending Scout Recruitment Inquiries</h4>
-          <span style="font-size: 0.76rem; color: #a78bfa;">🛡️ Minor Protection Guard Active (COPPA Compliance)</span>
+          <h4>Recruitment Inquiries</h4>
         </div>
-
         <div class="table-wrapper">
           <table class="tl-table">
             <thead>
               <tr>
-                <th>Scout & Institution</th>
-                <th>Candidate Talent</th>
-                <th>Inquiry Purpose</th>
-                <th>Approval Status</th>
+                <th>Institution</th>
+                <th>Candidate</th>
+                <th>Purpose</th>
+                <th>Status</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody id="admin-inquiries-body">
-              <!-- Rendered reactively via app.js -->
+              <!-- Rendered reactively via JS -->
             </tbody>
           </table>
         </div>
@@ -734,28 +584,26 @@
     </section>
 
     <!-- =======================================================================
-         SECTION: MASTER OFFICIAL AUDIT LOG (VISIBLE ACROSS PLATFORM)
+         SECTION: MASTER OFFICIAL AUDIT LOG
          ======================================================================= -->
-    <section class="tl-card" style="margin-top: 2rem;">
+    <section class="tl-card" style="margin-top: 4rem;">
       <div class="card-head">
-        <h4><span>📜</span> Master Official Log & Verification Feed</h4>
-        <span style="font-size: 0.76rem; color: var(--emerald-400);">Direct Feeds from Referees, Adjudicators & Judges</span>
+        <h4>Master Verification Log</h4>
       </div>
-
       <div class="table-wrapper">
         <table class="tl-table">
           <thead>
             <tr>
-              <th>Feeder & Official</th>
-              <th>Activity & Category</th>
-              <th>Event / Match</th>
-              <th>Official Scoreline</th>
-              <th>Video / Media Proof</th>
-              <th>Audit Status</th>
+              <th>Feeder</th>
+              <th>Category</th>
+              <th>Event</th>
+              <th>Scoreline</th>
+              <th>Proof</th>
+              <th>Status</th>
             </tr>
           </thead>
           <tbody id="official-logs-body">
-            <!-- Rendered reactively via app.js -->
+            <!-- Rendered reactively via JS -->
           </tbody>
         </table>
       </div>
@@ -764,151 +612,109 @@
   </main>
 
   <!-- =========================================================================
-       MODAL 1: ROLE SWITCHER MODAL
+       MODALS
        ========================================================================= -->
   <div class="modal-overlay" id="role-select-modal">
-    <div class="modal-box" style="max-width: 600px;">
+    <div class="modal-box">
       <div class="modal-head">
-        <h3><span>🔄</span> Switch Operating Role</h3>
+        <h3>Switch Role</h3>
         <button type="button" class="btn-close-modal">&times;</button>
       </div>
       <div class="modal-body">
-        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
-          Select a certified operational persona to inspect dedicated scoring, judging, scouting, or administrative portals.
-        </p>
-
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-          <div class="tl-card role-select-card" data-role="referee" style="cursor: pointer;">
-            <div style="font-size: 2rem; margin-bottom: 0.35rem;">⚽</div>
-            <strong style="color: var(--text-dark); font-size: 0.95rem;">Sports Referee</strong>
-            <p style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.2rem;">
-              Scorekeeper & Match Official for Indoor & Outdoor Sports.
-            </p>
+          <div class="role-select-card" data-role="referee">
+            <strong>Sports Referee</strong>
+            <p>Scorekeeper & Match Official</p>
           </div>
-
-          <div class="tl-card role-select-card" data-role="adjudicator" style="cursor: pointer;">
-            <div style="font-size: 2rem; margin-bottom: 0.35rem;">🎭</div>
-            <strong style="color: var(--text-dark); font-size: 0.95rem;">Arts Adjudicator</strong>
-            <p style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.2rem;">
-              Standardized rubric evaluator for Music & Drama festivals.
-            </p>
+          <div class="role-select-card" data-role="adjudicator">
+            <strong>Arts Adjudicator</strong>
+            <p>Evaluator for Music & Drama</p>
           </div>
-
-          <div class="tl-card role-select-card" data-role="judge" style="cursor: pointer;">
-            <div style="font-size: 2rem; margin-bottom: 0.35rem;">⚖️</div>
-            <strong style="color: var(--text-dark); font-size: 0.95rem;">Festival Judge</strong>
-            <p style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.2rem;">
-              Championship ranking and medal award issuer.
-            </p>
+          <div class="role-select-card" data-role="judge">
+            <strong>Festival Judge</strong>
+            <p>Medal award issuer</p>
           </div>
-
-          <div class="tl-card role-select-card" data-role="scout" style="cursor: pointer;">
-            <div style="font-size: 2rem; margin-bottom: 0.35rem;">🔍</div>
-            <strong style="color: var(--text-dark); font-size: 0.95rem;">Talent Scout</strong>
-            <p style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.2rem;">
-              Search, filter, view video reels, and recruit promising talents.
-            </p>
+          <div class="role-select-card" data-role="sponsor">
+            <strong>Sponsor / Foundation</strong>
+            <p>Scholarship issuance & talent support</p>
           </div>
-
-          <div class="tl-card role-select-card" data-role="student" style="cursor: pointer;">
-            <div style="font-size: 2rem; margin-bottom: 0.35rem;">🎓</div>
-            <strong style="color: var(--text-dark); font-size: 0.95rem;">Student Talent</strong>
-            <p style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.2rem;">
-              View cumulative verified portfolio, milestones, and credentials.
-            </p>
+          <div class="role-select-card" data-role="scout">
+            <strong>Talent Scout</strong>
+            <p>Search, filter, and recruit</p>
           </div>
-
-          <div class="tl-card role-select-card" data-role="admin" style="cursor: pointer;">
-            <div style="font-size: 2rem; margin-bottom: 0.35rem;">🏛️</div>
-            <strong style="color: var(--text-dark); font-size: 0.95rem;">School Principal</strong>
-            <p style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.2rem;">
-              School-wide compliance, credentialing, and scout approvals.
-            </p>
+          <div class="role-select-card" data-role="student">
+            <strong>Student Talent</strong>
+            <p>View verified portfolio</p>
+          </div>
+          <div class="role-select-card" data-role="admin">
+            <strong>School Admin</strong>
+            <p>Oversight & approvals</p>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- =========================================================================
-       MODAL 2: TALENT FULL DOSSIER MODAL
-       ========================================================================= -->
   <div class="modal-overlay" id="talent-detail-modal">
     <div class="modal-box">
       <div class="modal-head">
-        <h3><span>⭐</span> Student Verified Dossier</h3>
+        <h3>Verified Dossier</h3>
         <button type="button" class="btn-close-modal">&times;</button>
       </div>
-      <div class="modal-body" id="modal-talent-details">
-        <!-- Rendered dynamically via app.js -->
-      </div>
+      <div class="modal-body" id="modal-talent-details"></div>
     </div>
   </div>
 
-  <!-- =========================================================================
-       MODAL 3: VIDEO REEL PLAYER MODAL
-       ========================================================================= -->
   <div class="modal-overlay" id="video-reel-modal">
     <div class="modal-box">
       <div class="modal-head">
-        <h3><span>📹</span> Verified Performance Video Reel</h3>
+        <h3>Performance Video Reel</h3>
         <button type="button" class="btn-close-modal">&times;</button>
       </div>
-      <div class="modal-body" id="modal-video-details">
-        <!-- Rendered dynamically via app.js -->
-      </div>
+      <div class="modal-body" id="modal-video-details"></div>
     </div>
   </div>
 
-  <!-- =========================================================================
-       MODAL 4: SCOUT RECRUITMENT INQUIRY MODAL
-       ========================================================================= -->
   <div class="modal-overlay" id="inquiry-modal">
     <div class="modal-box">
       <div class="modal-head">
-        <h3><span>📨</span> Institutional Recruitment Outreach</h3>
+        <h3 id="inquiry-modal-title">Institutional Outreach</h3>
         <button type="button" class="btn-close-modal">&times;</button>
       </div>
       <div class="modal-body">
-        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">
-          In accordance with minor data privacy (COPPA / GDPR-K), recruitment inquiries are routed directly to the student's school administration and verified patrons.
-        </p>
-
         <form id="scout-inquiry-form">
           <input type="hidden" id="inquiry-student-id" />
           <input type="hidden" id="inquiry-student-name" />
 
           <div class="form-group">
-            <label>Selected Student Talent</label>
-            <div id="inquiry-target-label" style="font-weight: 700; color: var(--emerald-400); font-size: 0.95rem; background: var(--bg-light); padding: 0.65rem 0.85rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
-              Student Name
+            <label>Selected Talent</label>
+            <div id="inquiry-target-label" style="font-weight: 700; background: var(--bg-primary); padding: 0.65rem; border: var(--border-width) solid var(--border-color);">
+              Name
             </div>
           </div>
 
           <div class="form-group">
-            <label for="inquiry-purpose">Recruitment / Scholarship Purpose</label>
+            <label for="inquiry-purpose">Purpose</label>
             <select id="inquiry-purpose" class="form-control" required>
-              <option value="Collegiate Athletic / Arts Scholarship Evaluation">Collegiate Athletic / Arts Scholarship Evaluation</option>
-              <option value="National Youth Team Trial Invitation">National Youth Team Trial Invitation</option>
-              <option value="Performing Arts Conservatory Audition Invitation">Performing Arts Conservatory Audition Invitation</option>
-              <option value="Tournament / Championship Special Showcase Invite">Tournament / Championship Special Showcase Invite</option>
+              <option value="Scholarship Offer">Scholarship Offer / Financial Aid</option>
+              <option value="Collegiate Evaluation">Collegiate Evaluation</option>
+              <option value="Trial Invitation">Trial / Audition Invitation</option>
             </select>
           </div>
 
           <div class="form-group">
-            <label for="inquiry-message">Official Message to School Principal & Coach</label>
-            <textarea id="inquiry-message" rows="3" class="form-control" required>We have observed this candidate's verified scores and video recordings. We would like to initiate an institutional discussion regarding prospective scholarship pathways.</textarea>
+            <label for="inquiry-message">Message to Administration</label>
+            <textarea id="inquiry-message" rows="3" class="form-control" required>We have observed this candidate's verified scores and would like to initiate discussions regarding a potential scholarship opportunity.</textarea>
           </div>
 
-          <button type="submit" class="btn-primary" style="width: 100%; padding: 0.85rem;">
-            <span>Send Institutional Outreach Request</span>
+          <button type="submit" class="btn-primary" style="width: 100%;">
+            Send Request
           </button>
         </form>
       </div>
     </div>
   </div>
 
-  <!-- Toast Container -->
   <div class="toast-container" id="toast-container"></div>
 
   <!-- =========================================================================
@@ -917,20 +723,13 @@
   <footer class="site-footer">
     <div class="footer-inner">
       <div>
-        <strong style="color: var(--text-dark); font-size: 0.95rem;">TALENTLINK & SCOUTING PLATFORM</strong>
-        <p style="font-size: 0.78rem; color: var(--text-secondary); margin-top: 0.25rem;">
-          Designed with sportsmanship, transparency, and artistic integrity. Built for schools, athletes, artists, and recruiters.
+        <strong style="font-size: 1.2rem; font-family: var(--font-display); text-transform: uppercase;">TALENTLINK</strong>
+        <p style="margin-top: 0.5rem; max-width: 400px;">
+          Built for schools, athletes, artists, recruiters, and sponsors.
         </p>
       </div>
-
-      <div style="display: flex; gap: 1.5rem; font-size: 0.78rem; color: var(--text-muted);">
-        <span>Category: Indoor Sports</span>
-        <span>•</span>
-        <span>Outdoor Sports</span>
-        <span>•</span>
-        <span>Music & Drama</span>
-        <span>•</span>
-        <span>Referee / Adjudicator / Judge</span>
+      <div style="font-size: 0.85rem;">
+        &copy; 2026 TalentLink Platform
       </div>
     </div>
   </footer>
