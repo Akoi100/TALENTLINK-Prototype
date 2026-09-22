@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
           <div class="talent-card-actions">
             <button type="button" class="btn-primary" style="width: 100%; margin-bottom: 0.5rem;" onclick="window.TL_APP.openInquiryModal('${t.id}')">Recruit / Sponsor</button>
-            <button type="button" class="btn-secondary" style="width: 100%;" onclick="window.TL_APP.openTalentModal('${t.id}')">Full Dossier</button>
+            <button type="button" class="btn-secondary" style="width: 100%;" onclick="window.TL_APP.openTalentModal('${t.id}')">Student Profile</button>
           </div>
         </article>
       `;
