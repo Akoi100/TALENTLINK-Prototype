@@ -91,7 +91,15 @@ document.addEventListener("DOMContentLoaded", () => {
       if (btn.dataset.view === viewId) btn.classList.add("active");
       else btn.classList.remove("active");
     });
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    const targetSection = document.getElementById(viewId);
+    if (targetSection) {
+      const topbar = document.querySelector('.topbar');
+      const offset = topbar ? topbar.offsetHeight + 20 : 80;
+      const targetPosition = targetSection.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   }
 
   function updateUserDisplay() {
